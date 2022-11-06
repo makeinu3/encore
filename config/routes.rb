@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # 管理者
-  devise_for :admins, controllers: {
+  devise_for :admins, skip: [:registrations, :passwords] , controllers: {
     sessions: "admin/sessions"
   }
 
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   # 顧客
-  devise_for :customers, controllers: {
+  devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
   }

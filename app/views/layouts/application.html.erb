@@ -11,7 +11,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+    <header>
+      <h1>encore</h1>
+      <div class="text-right">
+        <% if customer_signed_in? %>
+          <%= link_to "ログアウト", url: destroy_customer_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "ログイン", url: customer_session_path %>
+        <% end %>
+      </div>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <p>No Live, No Life</p>
+    </footer>
   </body>
 </html>

@@ -23,6 +23,13 @@
           <%= link_to "マイページ", customer_path(current_customer) %>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
         </div>
+      <% elsif admin_signed_in? %>
+        <%= link_to admin_top_path do %>
+          <h1>encore</h1>
+        <% end %>
+        <div class="text-right">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </div>
       <% else %>
         <h1>encore</h1>
         <div class="text-right">

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto my-5">
+
+      <div class="row mb-5">
+        <div class="col-4">
+          <h5>
+            <%= @customer.name %>
+            <% if @customer == current_customer %>
+              <%= link_to "編集", edit_customer_path(current_customer), class: "btn btn-outline-danger btn-sm" %>
+            <% end %>
+          </h5>
+        </div>
+        <div class="col-3">
+          <%= link_to "フォロー", customer_path(current_customer), class: "btn btn-outline-info btn-sm" %> <!-- 仮URL  -->
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-4">
+          <h6>投稿数</h6>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>LIVE</th>
+                <th>STAGE</th>
+                <th>MUSICAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-4">
+          <%= @customer.introduction %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

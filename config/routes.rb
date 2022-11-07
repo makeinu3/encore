@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'top' => 'homes#top', as: 'top'
+    get '/' => 'homes#top', as: 'top'
     resources :customers
+    resources :genres, only: [:index, :create, :edit, :update]
   end
 
   # 顧客

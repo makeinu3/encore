@@ -13,14 +13,24 @@
 
   <body class="d-flex flex-column vh-100">
     <header>
-      <h1>encore</h1>
-      <div class="text-right">
-        <% if customer_signed_in? %>
-          <%= link_to "ログアウト", url: destroy_customer_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "ログイン", url: customer_session_path %>
+      <% if customer_signed_in? %>
+        <%= link_to root_path do %>
+          <h1>encore</h1>
         <% end %>
-      </div>
+        <div class="text-right">
+          <%= link_to "welcome", welcome_path %>
+          <%= link_to "about", about_path %>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <h1>encore</h1>
+        <div class="text-right">
+          <%= link_to "welcome", welcome_path %>
+          <%= link_to "about", about_path %>
+          <%= link_to "ログイン", new_customer_session_path %>
+        </div>
+      <% end %>
+
     </header>
 
     <main>

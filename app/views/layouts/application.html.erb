@@ -13,17 +13,7 @@
 
   <body class="d-flex flex-column vh-100">
     <header>
-      <% if customer_signed_in? %>
-        <%= link_to root_path do %>
-          <h1>encore</h1>
-        <% end %>
-        <div class="text-right">
-          <%= link_to "welcome", welcome_path %>
-          <%= link_to "about", about_path %>
-          <%= link_to "マイページ", customer_path(current_customer) %>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-        </div>
-      <% elsif admin_signed_in? %>
+      <% if admin_signed_in? %>
         <%= link_to admin_top_path do %>
           <h1>encore</h1>
         <% end %>
@@ -31,12 +21,23 @@
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         </div>
       <% else %>
-        <h1>encore</h1>
-        <div class="text-right">
-          <%= link_to "welcome", welcome_path %>
-          <%= link_to "about", about_path %>
-          <%= link_to "ログイン", new_customer_session_path %>
-        </div>
+        <%= link_to root_path do %>
+          <h1>encore</h1>
+        <% end %>
+        <% if customer_signed_in? %>
+          <div class="text-right">
+            <%= link_to "welcome", welcome_path %>
+            <%= link_to "about", about_path %>
+            <%= link_to "マイページ", customer_path(current_customer) %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          </div>
+        <% else %>
+          <div class="text-right">
+            <%= link_to "welcome", welcome_path %>
+            <%= link_to "about", about_path %>
+            <%= link_to "ログイン", new_customer_session_path %>
+          </div>
+        <% end %>
       <% end %>
 
     </header>

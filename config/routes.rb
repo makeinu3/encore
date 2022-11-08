@@ -24,7 +24,10 @@ Rails.application.routes.draw do
     get '/thanks' => 'homes#thanks', as: 'thanks'
 
     resources :customers, only: [:show, :edit, :update]
-    resources :posts
+
+    resources :posts do
+      resource :comments, only: [:create, :destroy]
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

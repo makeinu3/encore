@@ -19,20 +19,24 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get '/welcome' => 'homes#welcome', as: 'welcome'  # ログイン前のページ
+    get '/welcome' => 'homes#welcome', as: 'welcome'        # ログイン前のページ
     get '/about' => 'homes#about', as: 'about'
-    get '/thanks' => 'homes#thanks', as: 'thanks'     # ログアウト後のページ
+    get '/thanks' => 'homes#thanks', as: 'thanks'           # ログアウト後のページ
 
     resources :customers, only: [:show, :edit, :update] do
+      member do
+        get 'likes'                                         # いいねした投稿一覧
+      end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
     resources :posts do
-      resource :likes, only: [:create, :destroy, :index]
       resources :comments, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
     end
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

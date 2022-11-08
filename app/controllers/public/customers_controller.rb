@@ -16,6 +16,12 @@ class Public::CustomersController < ApplicationController
     render :show
   end
 
+  # いいねした投稿一覧
+  def likes
+    @customer = Customer.find(params[:id])
+    likes = Like.where(customer_id: @customer.id).pluck(:post_id)
+    @like_posts = Post.find(likes)
+  end
 
 
   private

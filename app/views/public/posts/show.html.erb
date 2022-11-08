@@ -10,6 +10,7 @@
           <% end %>
           <p><%= @post.title %></p>
           <p><%= @post.body %></p>
+          <p><%= link_to @post.customer.name, customer_path(@post.customer) %></p>
           <% if @post.customer == current_customer %>
             <p><%= link_to "edit", edit_post_path(@post), class: "btn btn-outline-success btn-sm" %></p>
             <p><%= link_to "destroy", post_path(@post), method: :delete, class: "btn btn-outline-danger btn-sm" %></p>

@@ -1,0 +1,7 @@
+<% if customer != current_customer %>
+  <% if current_customer.following?(customer) %>
+    <%= link_to "following", customer_relationships_path(customer), method: :delete, class: "btn btn-light btn-sm btn-block" %>
+  <% else %>
+    <%= link_to "follow", customer_relationships_path(customer), method: :post, class: "btn btn-info btn-sm btn-block" %>
+  <% end %>
+<% end %>

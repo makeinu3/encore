@@ -19,14 +19,18 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get '/welcome' => 'homes#welcome', as: 'welcome'
+    get '/welcome' => 'homes#welcome', as: 'welcome'  # ログイン前のページ
     get '/about' => 'homes#about', as: 'about'
-    get '/thanks' => 'homes#thanks', as: 'thanks'
+    get '/thanks' => 'homes#thanks', as: 'thanks'     # ログアウト後のページ
 
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
 
     resources :posts do
-      resource :likes, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy, :index]
       resources :comments, only: [:create, :destroy]
     end
   end

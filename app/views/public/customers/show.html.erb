@@ -12,7 +12,7 @@
           </h5>
         </div>
         <div class="col-3">
-          <%= link_to "フォロー", customer_path(current_customer), class: "btn btn-outline-info btn-sm" %> <!-- 仮URL  -->
+          <%= render 'public/relationships/btn', customer: @customer %>
         </div>
       </div>
 

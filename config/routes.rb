@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top', as: 'top'
-    resources :customers
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :posts, only: [:index, :show]
   end
 
   # 顧客
@@ -38,7 +39,6 @@ Rails.application.routes.draw do
     end
 
     resources :messages, only: [:index, :create, :destroy]
-
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

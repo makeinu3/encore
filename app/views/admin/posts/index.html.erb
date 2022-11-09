@@ -1,0 +1,16 @@
+<h4>posts#index</h4>
+<%= search_form_for @search do |f| %>
+  <p>
+    <%= f.search_field :title_or_place_or_show_name_cont, placeholder: "公演名、会場名など", class: "form-control" %>
+    <%= f.submit "search", class: "btn btn-info btn-sm" %>
+  </p>
+<% end %>
+
+<div class="col-md-8">
+  <% @posts.each do |post| %>
+    <% if post.image.attached? %>
+      <p><%= image_tag post.image, width: "30%" %></p>
+    <% end %>
+    <p><%= link_to post.title, admin_post_path(post) %></p>
+  <% end %>
+</div>

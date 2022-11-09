@@ -3,7 +3,8 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @posts = Post.all
+    @search = Post.ransack(params[:q])  # 検索
+    @posts = @search.result             # 検索結果
   end
 
   def show
@@ -31,6 +32,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @comment = Comment.new
     @post.update(post_params)
     render :show
   end

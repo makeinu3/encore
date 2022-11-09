@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
   has_many :posts, dependent: :destroy     # 投稿
   has_many :comments, dependent: :destroy  # 投稿へのコメント
   has_many :likes, dependent: :destroy     # 投稿へのいいね
+  has_many :messages, dependent: :destroy  # お客様ノート(掲示板)へのメッセージ
 
   # フォローした
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

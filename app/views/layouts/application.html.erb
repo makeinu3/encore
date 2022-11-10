@@ -48,9 +48,13 @@
 
     <footer>
       <p>No Live, No Life</p>
-      <div class="text-right">
-        <%= link_to "お客様ノート", messages_path %>
-      </div>
+      <% unless admin_signed_in? %>
+        <% if customer_signed_in? %>
+          <div class="text-right">
+            <%= link_to "お客様ノート", messages_path %>
+          </div>
+        <% end %>
+      <% end %>
     </footer>
   </body>
 </html>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mx-auto my-5">
+      <p class="notice"><%= notice %><%= alert %></p>
+
+      <div class="row">
+        <div class="col-md-3">
+          <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
+        </div>
+
+        <div class="col-md-8 offset-md-1">
+          <h4>会員一覧</h4>
+          <table class="table table-hover">
+            <thead>
+              <tr align="center">
+                <th style="width: 15%">会員ID</th>
+                <th style="width: 30%">お名前</th>
+                <th style="width: 15%">投稿数</th>
+                <th style="width: 20%">公開/非公開</th>
+                <th style="width: 20%">ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @customers.each do |customer| %>
+                <tr>
+                  <td align="center"><%= customer.id %></td>
+                  <td>
+                    <%= link_to admin_customer_path(customer) do %>
+                      <u class="text-dark"><%= customer.name %></u>
+                    <% end %>
+                  </td>
+                  <td align="center"><%= customer.posts.count %></td>
+                  <td align="center"></td>
+                  <td align="center">
+                    <% if customer.is_deleted == false %>
+                      <div class="text-info"><strong>有効</strong></div>
+                    <% else %>
+                      <div class="text-muted"><strong>退会</strong></div>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

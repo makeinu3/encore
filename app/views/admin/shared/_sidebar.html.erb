@@ -1,23 +1,40 @@
-<div class="col-md-3">
-  <h6><%= Date.current.strftime('%Y/%m/%d(%a)') %></h6>
-  <h2><%= Time.current.strftime('%H:%M') %></h2>
+<h6><%= Date.current.strftime('%Y/%m/%d(%a)') %></h6>
+<h2><%= Time.current.strftime('%H:%M') %></h2>
 
-  <ul class="list-group">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <%= link_to admin_customers_path do %>
-        <u class="text-dark">customers</u>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <%= link_to admin_customers_path do %>
+      <div class="text-dark">
+        customers
         <span class="badge badge-light badge-pill">
           <%= customers.count %>
         </span>
-      <% end %>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <%= link_to admin_posts_path do %>
-        <u class="text-dark">posts</u>
+      </div>
+    <% end %>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <%= link_to admin_posts_path do %>
+      <div class="text-dark">
+        posts
         <span class="badge badge-light badge-pill">
           <%= posts.count %>
         </span>
-      <% end %>
-    </li>
-  </ul>
-</div>
+      </div>
+    <% end %>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <%= link_to admin_messages_path do %>
+      <div class="text-dark">
+        お客様ノート
+        <span class="badge badge-light badge-pill">
+          <%= messages.count %>
+        </span>
+      </div>
+    <% end %>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <%= link_to admin_genres_path do %>
+      <div class="text-dark">genres</div>
+    <% end %>
+  </li>
+</ul>

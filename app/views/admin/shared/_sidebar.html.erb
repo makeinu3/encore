@@ -2,7 +2,7 @@
 <h2><%= Time.current.strftime('%H:%M') %></h2>
 
 <ul class="list-group list-group-flush">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
+  <li class="list-group-item">
     <%= link_to admin_customers_path do %>
       <div class="text-dark">
         customers
@@ -12,7 +12,7 @@
       </div>
     <% end %>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
+  <li class="list-group-item">
     <%= link_to admin_posts_path do %>
       <div class="text-dark">
         posts
@@ -22,7 +22,7 @@
       </div>
     <% end %>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
+  <li class="list-group-item">
     <%= link_to admin_messages_path do %>
       <div class="text-dark">
         お客様ノート
@@ -32,7 +32,7 @@
       </div>
     <% end %>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
+  <li class="list-group-item">
     <%= link_to admin_genres_path do %>
       <div class="text-dark">genres</div>
     <% end %>

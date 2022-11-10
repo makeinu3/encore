@@ -1,15 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 mx-auto my-5">
+    <div class="col-md-12">
       <p class="notice"><%= notice %><%= alert %></p>
 
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 mx-auto p-5">
           <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
         </div>
 
-        <div class="col-md-8 offset-md-1">
-          <h4><%= @customer.name %>さん</h4>
+        <div class="col-md-8 mx-auto p-5">
+          <form class="form-inline d-flex justify-content-between">
+            <h4><%= @customer.name %>さん</h4>
+            <div align="right">
+              Follow : <%= @customer.followings.count %> |
+              Follower : <%= @customer.followers.count %> |
+              Posts : <%= @customer.posts.count %>
+            </div>
+          </form>
 
           <div class="row mt-3">
              <div class="col-3">会員ID</div>
@@ -53,8 +60,9 @@
           </div>
 
           <div class="row mt-5">
-            <div class="col-3">
-              <%= link_to "edit", edit_admin_customer_path(@customer), class: "btn btn-success btn-sm btn-block" %>
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= link_to "edit", edit_admin_customer_path(@customer), class: "btn btn-outline-success btn-sm btn-block" %>
             </div>
           </div>
 

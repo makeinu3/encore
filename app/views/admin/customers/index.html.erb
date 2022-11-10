@@ -1,21 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 mx-auto my-5">
+    <div class="col-md-12">
       <p class="notice"><%= notice %><%= alert %></p>
 
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 mx-auto p-5">
           <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
         </div>
 
-        <div class="col-md-8 offset-md-1">
-          <h4>会員一覧</h4>
-          <table class="table table-hover">
+        <div class="col-md-8 mx-auto p-5">
+          <form class="form-inline d-flex justify-content-between">
+            <h4>会員一覧</h4>
+            <div align="right">
+              <%= search_form_for @search, url: admin_customers_path do |f| %>
+                <%= f.search_field :name_or_introduction_or_my_fave_cont, placeholder: "名前など", class: "form-control form-control-sm" %>
+                <%= f.submit "search", class: "btn btn-outline-info btn-sm" %>
+              <% end %>
+            </div>
+          </form>
+          <table class="table table-hover mt-3">
             <thead>
               <tr align="center">
-                <th style="width: 15%">会員ID</th>
-                <th style="width: 30%">お名前</th>
-                <th style="width: 15%">投稿数</th>
+                <th style="width: 10%">会員ID</th>
+                <th style="width: 20%">お名前</th>
+                <th style="width: 20%">好き</th>
+                <th style="width: 10%">投稿数</th>
                 <th style="width: 20%">公開/非公開</th>
                 <th style="width: 20%">ステータス</th>
               </tr>
@@ -29,11 +38,12 @@
                       <u class="text-dark"><%= customer.name %></u>
                     <% end %>
                   </td>
+                  <td><%= customer.my_fave %></td>
                   <td align="center"><%= customer.posts.count %></td>
                   <td align="center"></td>
                   <td align="center">
                     <% if customer.is_deleted == false %>
-                      <div class="text-info"><strong>有効</strong></div>
+                      <div class="text-success"><strong>有効</strong></div>
                     <% else %>
                       <div class="text-muted"><strong>退会</strong></div>
                     <% end %>

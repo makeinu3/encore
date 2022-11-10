@@ -1,7 +1,8 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    @customers = Customer.all
+    @search = Customer.ransack(params[:q])  # 検索
+    @customers = @search.result             # 検索結果
     @posts = Post.all.order("created_at DESC")
     @messages = Message.all
   end

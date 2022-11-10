@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto my-5">
+    <div class="col-md-12">
       <p class="notice"><%= notice %></p>
 
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 mx-auto p-5">
           <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
         </div>
 
-        <div class="col-md-8 offset-md-1">
+        <div class="col-md-8 mx-auto p-5">
           <div class="row mb-3">
             <div class="col-12">
               <h4>今週の新着投稿</h4>

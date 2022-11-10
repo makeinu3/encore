@@ -1,16 +1,40 @@
-<h4>posts#index</h4>
-<%= search_form_for @search do |f| %>
-  <p>
-    <%= f.search_field :title_or_place_or_show_name_cont, placeholder: "公演名、会場名など", class: "form-control" %>
-    <%= f.submit "search", class: "btn btn-info btn-sm" %>
-  </p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="notice"><%= notice %><%= alert %></p>
 
-<div class="col-md-8">
-  <% @posts.each do |post| %>
-    <% if post.image.attached? %>
-      <p><%= image_tag post.image, width: "30%" %></p>
-    <% end %>
-    <p><%= link_to post.title, admin_post_path(post) %></p>
-  <% end %>
+      <div class="row">
+        <div class="col-md-3 mx-auto p-5">
+          <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
+        </div>
+
+        <div class="col-md-8 mx-auto p-5">
+          <form class="form-inline d-flex justify-content-between">
+            <h4>投稿一覧</h4>
+            <div align="right">
+              <%= search_form_for @search, url: admin_posts_path do |f| %>
+                <%= f.search_field :title_or_place_or_show_name_cont, placeholder: "公演名など", class: "form-control form-control-sm" %>
+                <%= f.submit "search", class: "btn btn-outline-info btn-sm" %>
+              <% end %>
+            </div>
+          </form>
+          <div class="row mt-3">
+            <% @posts.each do |post| %>
+              <div class="col-md-3">
+                <%= link_to admin_post_path(post) do %>
+                  <% if post.image.attached? %>
+                    <%= image_tag post.image, width: "100%" %>
+                  <% end %>
+                  <div class="text-dark text-center"><%= post.title %></div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 </div>

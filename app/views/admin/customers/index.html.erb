@@ -23,9 +23,8 @@
               <tr align="center">
                 <th style="width: 10%">会員ID</th>
                 <th style="width: 20%">お名前</th>
-                <th style="width: 20%">好き</th>
+                <th style="width: 20%">好きなひと</th>
                 <th style="width: 10%">投稿数</th>
-                <th style="width: 20%">公開/非公開</th>
                 <th style="width: 20%">ステータス</th>
               </tr>
             </thead>
@@ -40,7 +39,6 @@
                   </td>
                   <td><%= customer.my_fave %></td>
                   <td align="center"><%= customer.posts.count %></td>
-                  <td align="center"></td>
                   <td align="center">
                     <% if customer.is_deleted == false %>
                       <div class="text-success"><strong>有効</strong></div>
@@ -52,6 +50,13 @@
               <% end %>
             </tbody>
           </table>
+
+          <div class="row mt-5">
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
+            </div>
+          </div>
         </div>
 
       </div>

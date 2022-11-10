@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <p class="notice"><%= notice %><%= alert %></p>
+      <p class="notice"><%= notice %></p>
 
       <div class="row">
         <div class="col-md-3 mx-auto p-5">
@@ -31,8 +31,14 @@
             <% end %>
           </div>
 
-        </div>
+          <div class="row mt-5">
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
+            </div>
+          </div>
 
+        </div>
       </div>
 
     </div>

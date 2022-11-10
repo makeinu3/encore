@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-md-8 mx-auto p-5">
-          <h4><%= @customer.name %>さん(edit)</h4>
+          <h4><%= @customer.name %> さま 【 編集ページ 】</h4>
 
           <div class="row mt-3">
              <div class="col-3">会員ID</div>
@@ -60,9 +60,12 @@
             </div>
 
             <div class="row mt-5">
-              <div class="col-10"></div>
+              <div class="col-8"></div>
               <div class="col-2">
                 <%= f.submit "update", class: "btn btn-outline-success btn-sm btn-block" %>
+              </div>
+              <div class="col-2">
+                <%= render 'layouts/back_btn' %>
               </div>
             </div>
           <% end %>

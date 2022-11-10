@@ -10,7 +10,7 @@
 
         <div class="col-md-8 mx-auto p-5">
           <form class="form-inline d-flex justify-content-between">
-            <h4><%= @customer.name %>さん</h4>
+            <h4><%= @customer.name %> さま</h4>
             <div align="right">
               Follow : <%= @customer.followings.count %> |
               Follower : <%= @customer.followers.count %> |
@@ -60,9 +60,12 @@
           </div>
 
           <div class="row mt-5">
-            <div class="col-10"></div>
+            <div class="col-8"></div>
             <div class="col-2">
               <%= link_to "edit", edit_admin_customer_path(@customer), class: "btn btn-outline-success btn-sm btn-block" %>
+            </div>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
             </div>
           </div>
 

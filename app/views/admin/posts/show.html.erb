@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <p class="notice"><%= notice %><%= alert %></p>
+      <p class="notice"><%= notice %></p>
 
       <div class="row">
         <div class="col-md-3 mx-auto p-5">
@@ -16,11 +16,23 @@
               <% end %>
             </div>
             <div class="col-6">
-              <p><strong><%= @post.title %></strong></p>
+              <form class="form-inline d-flex justify-content-between my-3">
+                <strong><%= @post.title %></strong>
+                <div align="right">
+                  ♡ <%= @post.likes.count %> likes
+                </div>
+              </form>
               <p><%= @post.body %></p>
               <p><%= @post.place %></p>
               <p><%= @post.show_name %></p>
               <p><%= @post.show_date.strftime('%Y/%m/%d') %></p>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
             </div>
           </div>
 
@@ -36,7 +48,6 @@
           </div>
 
         </div>
-
       </div>
 
     </div>

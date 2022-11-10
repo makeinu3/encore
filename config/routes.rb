@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :posts, only: [:index, :show]
-    resources :messages, only: [:index, :create, :destroy]
+    resources :messages, only: [:index, :destroy]
   end
 
   # 顧客

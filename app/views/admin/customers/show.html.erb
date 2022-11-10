@@ -21,6 +21,43 @@
             <div class="col-8 offset-1"><%= @customer.name %></div>
           </div>
 
+          <div class="row mt-3">
+            <div class="col-3">メールアドレス</div>
+            <div class="col-8 offset-1"><%= @customer.email %></div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-3">自己紹介</div>
+            <div class="col-8 offset-1"><%= @customer.introduction %></div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-3">好きなひと</div>
+            <div class="col-8 offset-1"><%= @customer.my_fave %></div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-3">公開/非公開</div>
+            <div class="col-8 offset-1"></div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-3">退会ステータス</div>
+            <div class="col-8 offset-1">
+              <% if @customer.is_deleted == false %>
+                <div class="text-info"><strong>有効</strong></div>
+              <% else %>
+                <div class="text-muted"><strong>退会</strong></div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-3">
+              <%= link_to "edit", edit_admin_customer_path(@customer), class: "btn btn-success btn-sm btn-block" %>
+            </div>
+          </div>
+
         </div>
 
       </div>

@@ -21,13 +21,18 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get '/welcome' => 'homes#welcome', as: 'welcome'        # ログイン前のページ
+    get '/welcome' => 'homes#welcome', as: 'welcome'  # ログイン前のページ
     get '/about' => 'homes#about', as: 'about'
-    get '/thanks' => 'homes#thanks', as: 'thanks'           # ログアウト後のページ
+    get '/thanks' => 'homes#thanks', as: 'thanks'     # ログアウト後のページ
 
-    resources :customers, only: [:show, :edit, :update] do
+    get 'customers/my_page' => 'customers#my_page', as: 'my_page'
+    get 'customers/info/edit' => 'customers#edit', as: 'edit_info'
+    patch 'customers/info' => 'customers#update', as: 'update_info'
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'  # 退会確認画面
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'        # 退会処理
+    resources :customers, only: [:show] do
       member do
-        get 'likes'                                         # いいねした投稿一覧
+        get 'likes'  # いいねした投稿一覧
       end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'

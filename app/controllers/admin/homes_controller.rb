@@ -1,9 +1,8 @@
 class Admin::HomesController < ApplicationController
 
+  before_action :set_sidebar  # @customers, @posts, @messages
+
   def top
-    @customers = Customer.all
-    @posts = Post.all.order("created_at DESC")
-    @messages = Message.all
   end
 
 end

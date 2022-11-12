@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <p>退会しますか？</p>
+      <%= link_to "no", customer_path(@customer), class: "btn btn-outline-success btn-sm" %>
+      <%= link_to "yes", withdraw_customer_path(@customer), method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-outline-danger btn-sm" %>
+    </div>
+  </div>
+</div>

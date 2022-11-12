@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
 
-  before_action :authenticate_customer!
+  before_action :redirect_welcome, except: [:index]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]  # Post.find(params[:id])
 
   def index
     @search = Post.ransack(params[:q])  # 検索
@@ -8,7 +9,6 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @comment = Comment.new
   end
 
@@ -27,18 +27,15 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     @comment = Comment.new
     @post.update(post_params)
     render :show
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
   end

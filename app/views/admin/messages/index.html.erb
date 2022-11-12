@@ -17,7 +17,7 @@
                   <%= message.created_at.strftime('%Y/%m/%d') %>
                   <%= message.message %>
                   <%= message.customer.name %>
-                  <%= link_to "削除", admin_message_path(message), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                  <%= link_to "削除", admin_message_path(message), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger btn-sm" %>
                 </p>
               <% end %>
             </div>

@@ -1,5 +1,7 @@
 class Public::CommentsController < ApplicationController
 
+  before_action :redirect_welcome
+
   def create
     post = Post.find(params[:post_id])
     comment = current_customer.comments.new(comment_params)

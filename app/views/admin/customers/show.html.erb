@@ -52,7 +52,7 @@
             <div class="col-3">退会ステータス</div>
             <div class="col-8 offset-1">
               <% if @customer.is_deleted == false %>
-                <div class="text-info"><strong>有効</strong></div>
+                <div class="text-success"><strong>有効</strong></div>
               <% else %>
                 <div class="text-muted"><strong>退会</strong></div>
               <% end %>

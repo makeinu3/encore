@@ -6,11 +6,10 @@
         <div class="col-4">
           <h5>
             <%= @customer.name %>
-            <% if @customer == current_customer %>
-              <%= link_to "編集", edit_info_path(current_customer), class: "btn btn-outline-success btn-sm" %>
-              <%= link_to "退会", confirm_unsubscribe_path, class: "btn btn-outline-danger btn-sm" %>
-              <%= link_to "likes", likes_customer_path(@customer) %>
-            <% end %>
+            <%= link_to "編集", edit_info_path(current_customer), class: "btn btn-outline-success btn-sm" %>
+            <%= link_to "退会", confirm_unsubscribe_path, class: "btn btn-outline-danger btn-sm" %>
+            <%= link_to "likes", likes_customer_path(@customer) %>
+
           </h5>
         </div>
         <div class="col-3">

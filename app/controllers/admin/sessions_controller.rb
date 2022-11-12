@@ -19,10 +19,12 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
+    flash[:notice] = "おはようございます。本日もよろしくお願いします。"
     admin_top_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "本日もおつかれさまでした！"
     new_admin_session_path
   end
 

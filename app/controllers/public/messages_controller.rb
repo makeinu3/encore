@@ -1,5 +1,8 @@
 class Public::MessagesController < ApplicationController
 
+  before_action :redirect_welcome
+  before_action :set_message, only: [:destroy]  # Message.find(params[:id])
+
   def index
     @messages = Message.all.includes(:customer).order("created_at DESC")
     @message = Message.new
@@ -13,7 +16,7 @@ class Public::MessagesController < ApplicationController
   end
 
   def destroy
-    Message.find(params[:id]).destroy
+    @message.destroy
     redirect_to messages_path
   end
 

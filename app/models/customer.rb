@@ -29,4 +29,9 @@ class Customer < ApplicationRecord
     followings.include?(customer)
   end
 
+  # 退会していなかったらログインできる
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end

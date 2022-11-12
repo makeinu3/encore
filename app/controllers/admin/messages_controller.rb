@@ -1,21 +1,17 @@
 class Admin::MessagesController < ApplicationController
 
+  before_action :authenticate_admin!
+  before_action :set_sidebar                 # @customers, @posts, @messages
+  before_action :set_post, except: [:index]  # Message.find(params[:id])
+
   def index
     @messages = Message.all
     @message = Message.new
-    # サイドバー用
-    @customers = Customer.all
-    @posts = Post.all.order("created_at DESC")
-    @messages = Message.all
   end
 
   def destroy
-    Message.find(params[:id]).destroy
+    @message.destroy
     redirect_to admin_messages_path
-    # サイドバー用
-    @customers = Customer.all
-    @posts = Post.all.order("created_at DESC")
-    @messages = Message.all
   end
 
 

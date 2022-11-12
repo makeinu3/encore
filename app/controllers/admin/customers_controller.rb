@@ -1,36 +1,26 @@
 class Admin::CustomersController < ApplicationController
 
+  before_action :authenticate_admin!
+  before_action :set_sidebar, except: [:index]   # @customers, @posts, @messages
+  before_action :set_customer, except: [:index]  # Customer.find(params[:id])
+
   def index
     @search = Customer.ransack(params[:q])  # 検索
     @customers = @search.result             # 検索結果
+    # サイドバー用
     @posts = Post.all.order("created_at DESC")
     @messages = Message.all
   end
 
   def show
-    @customer = Customer.find(params[:id])
-    # サイドバー用
-    @customers = Customer.all
-    @posts = Post.all.order("created_at DESC")
-    @messages = Message.all
   end
 
   def edit
-    @customer = Customer.find(params[:id])
-    # サイドバー用
-    @customers = Customer.all
-    @posts = Post.all.order("created_at DESC")
-    @messages = Message.all
   end
 
   def update
-    @customer = Customer.find(params[:id])
     @customer.update(customer_params)
     redirect_to admin_customer_path(@customer)
-    # サイドバー用
-    @customers = Customer.all
-    @posts = Post.all.order("created_at DESC")
-    @messages = Message.all
   end
 
 

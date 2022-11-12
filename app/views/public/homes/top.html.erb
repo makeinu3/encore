@@ -1,11 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto my-5 text-center">
-      <h3>本日のおすすめ</h3>
+    <div class="col-md-12 my-3">
+      <p class="notice"><%= notice %></p>
 
       <div class="row">
-        <div class="col-md-8">
-          <%= link_to "post index", posts_path %>
+        <div class="col-md-10 p-5">
+          <h4>本日のおすすめ</h4>
+
+          <div class="wrap">
+            <ul id="tab-menu">
+              <li><a href="#tab1" class="active">ライブ</a></li>
+              <li><a href="#tab1" class="">舞台</a></li>
+              <li><a href="#tab1" class="">ミュージカル</a></li>
+            </ul>
+
+            <div id="tab-contents">
+              <div id="tab1" class="tab">
+                <%= link_to "ライブ一覧", posts_path %>
+              </div>
+              <div id="tab2" class="tab">
+                <%= link_to "舞台一覧", posts_path %>
+              </div>
+              <div id="tab3" class="tab">
+                <%= link_to "ミュージカル一覧", posts_path %>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 

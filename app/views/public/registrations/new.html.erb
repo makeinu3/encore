@@ -56,9 +56,11 @@
 
       <div class="row">
         <div class="col-md-8 p-5">
-          <h4>会員の方は</h4>
+          <h5>会員の方</h5>
           <div class="col-10 mx-auto mt-3">
-            <%= link_to "こちら", new_customer_session_path %> からログインをお願いします。
+            すでに会員登録がお済みの方は、
+            <u><%= link_to "こちら", new_customer_session_path %></u>
+            からログインをお願いします。
           </div>
         </div>
       </div>

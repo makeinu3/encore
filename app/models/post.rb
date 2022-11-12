@@ -8,6 +8,14 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :image, presence: true
+  validates :place, presence: true
+  validates :show_name, presence: true
+  validates :show_date, presence: true
+
+
   def liked_by?(customer)
     likes.exists?(customer_id: customer.id)
   end

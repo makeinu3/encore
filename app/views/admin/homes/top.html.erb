@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 my-3">
       <p class="notice"><%= notice %></p>
 
-      <div class="row">
-        <div class="col-md-3 mx-auto p-5">
+      <div class="row my-3">
+        <div class="col-md-3 p-5">
           <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
         </div>
 
-        <div class="col-md-8 mx-auto p-5">
-          <div class="row mb-3">
+        <div class="col-md-8 p-5">
+          <div class="row">
             <div class="col-12">
               <h4>今週の新着投稿</h4>
               <p>count</p>
@@ -18,7 +18,7 @@
               <p>skipperしたい</p>
             </div>
           </div>
-          <div class="row mb-3">
+          <div class="row">
             <div class="col-12">
               <h4>なにいれようかな</h4>
             </div>

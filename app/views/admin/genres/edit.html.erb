@@ -1,23 +1,33 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto my-3">
+    <div class="col-md-12 my-3">
 
       <div class="row my-3">
-        <div class="col-md-8">
-          <h4>ジャンル edit</h4>
+        <div class="col-md-3 p-5">
+          <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
         </div>
-      </div>
 
-      <div class="row">
-        <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
-          <div class="col-md-6">
-            <%= f.label :name, "genre name" %>
+        <div class="col-md-8 p-5">
+          <h4>ジャンル 【 編集ページ 】</h4>
+          <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
+            <div class="row mt-3">
+              <div class="col-5">
+                <%= f.text_field :name, class: "form-control form-control-sm" %>
+              </div>
+              <div class="col-2">
+                <%= f.submit "update", class: "btn btn-outline-success btn-sm" %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="row mt-3">
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
+            </div>
           </div>
-          <div class="col-md-6">
-            <%= f.text_field :name, class: "form-control" %>
-            <%= f.submit "update" %>
-          </div>
-        <% end %>
+
+        </div>
       </div>
 
     </div>

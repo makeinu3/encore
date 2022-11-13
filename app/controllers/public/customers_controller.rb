@@ -8,6 +8,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
+    # ジャンルごとの投稿数
+    @genre1_posts = Post.where(genre_id: 1, customer_id: @customer)
+    @genre2_posts = Post.where(genre_id: 2, customer_id: @customer)
+    @genre3_posts = Post.where(genre_id: 3, customer_id: @customer)
   end
 
   def edit

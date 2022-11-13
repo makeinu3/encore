@@ -19,8 +19,8 @@ class Customer < ApplicationRecord
 
   validates :name, presence: true
   validates :email, uniqueness: true, presence: true
-  validates :myfave, length: { maximum: 20 }
-  validates :introduction, length: { maximum: 300 }
+  validates :my_fave, presence: true, length: { maximum: 20 }
+  validates :introduction, presence: true,length: { maximum: 300 }
 
 
   # フォローしたとき

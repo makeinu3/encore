@@ -1,26 +1,53 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 my-3">
+      <p class="notice"><%= render "public/shared/error_messages", resource: resource %></p>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="row my-3">
+        <div class="col-md-8 p-5">
+          <h4>ログイン</h4>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <%= form_with model: @customer, url: customer_session_path, method: :post do |f| %>
+            <div class="row mt-5 ml-5">
+              <div class="col-3">
+                <%= f.label :email, "メールアドレス" %>
+              </div>
+              <div class="col-8">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email@example.com", class: "form-control" %>
+              </div>
+            </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            <div class="row mt-3 ml-5">
+              <div class="col-3">
+                <%= f.label :password, "パスワード" %>
+              </div>
+              <div class="col-5">
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-5">
+              <div class="col-3"></div>
+              <div class="col-2">
+                <%= f.submit "ログイン", class: "btn btn-outline-info btn-sm btn-block" %>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 p-5">
+          <h5>初めてご利用される方</h5>
+          <div class="col-10 mx-auto mt-3">
+            会員登録がお済みでない方は、
+            <u><%= link_to "こちら", new_customer_registration_path %></u>
+            から会員登録をお願いします。
+          </div>
+        </div>
+      </div>
+
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>

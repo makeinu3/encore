@@ -22,9 +22,7 @@
             <% @posts.each do |post| %>
               <div class="col-3">
                 <%= link_to admin_post_path(post) do %>
-                  <% if post.image.attached? %>
-                    <%= image_tag post.image, width: "100%" %>
-                  <% end %>
+                  <%= image_tag post.image, width: "100%" %>
                   <div class="text-dark text-center"><%= post.title %></div>
                 <% end %>
               </div>

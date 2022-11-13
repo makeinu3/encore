@@ -1,58 +1,98 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mx-auto my-5">
-
-      <div class="row my-3">
-        <div class="col-md-8">
-          <h2>post show</h2>
-          <% if @post.image.attached? %>
-            <p><%= image_tag @post.image, width: "80%" %></p>
-          <% end %>
-          <p><%= @post.title %></p>
-          <p><%= @post.body %></p>
-          <p><%= link_to @post.customer.name, customer_path(@post.customer) %></p>
-          <% if @post.customer == current_customer %>
-            <p><%= link_to "edit", edit_post_path(@post), class: "btn btn-outline-success btn-sm" %></p>
-            <p><%= link_to "destroy", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger btn-sm" %></p>
-          <% end %>
-        </div>
-      </div>
+    <div class="col-md-12 my-3">
+      <p class="notice"><%= notice %></p>
 
       <div class="row">
-        <div class="col-md-8">
-          <p>
-            <% if @post.liked_by?(current_customer) %>
-              <%= link_to post_likes_path(@post), method: :delete do %>
-                ♥ <%= @post.likes.count %> likes
-              <% end %>
+        <div class="col-md-8 p-5">
+          <h5>
+            <u><%= link_to @post.customer.name, customer_path(@post.customer), class: "text-dark" %></u>
+          </h5>
+          <div class="row">
+            <div class="col-5">
+              <%= image_tag @post.image, width: "100%" %>
+              <p>
+                <% if @post.liked_by?(current_customer) %>
+                  <%= link_to post_likes_path(@post), method: :delete do %>
+                    ♥ <%= @post.likes.count %> likes
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(@post), method: :post do %>
+                    ♡ <%= @post.likes.count %> likes
+                  <% end %>
+                <% end %>
+              </p>
+             </div>
+            <div class="col-7">
+              <h5><strong><%= @post.title %></strong></h5>
+              <div class="p-3"><%= @post.body %></div>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-12">
+              <div align="right">
+                 <%= @post.place %>
+                 「<%= @post.show_name %>」
+                 <%= @post.show_date.strftime('%Y.%m.%d') %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <% if @post.customer == current_customer %>
+              <div class="col-6"></div>
+              <div class="col-2">
+                <%= link_to "edit", edit_post_path(@post), class: "btn btn-outline-success btn-sm btn-block" %>
+              </div>
+              <div class="col-2">
+                <%= link_to "destroy", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger btn-sm btn-block" %>
+              </div>
             <% else %>
-              <%= link_to post_likes_path(@post), method: :post do %>
-                ♡ <%= @post.likes.count %> likes
-              <% end %>
+              <div class="col-10"></div>
             <% end %>
-          </p>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-8">
+      <div class="row mt-3">
+        <div class="col-md-8 p-5">
           <% @post.comments.each do |comment| %>
-            <p><%= comment.customer.name %></p>
-            <p><%= comment.comment %></p>
-            <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-            <% if comment.customer == current_customer %>
-              <p><%= link_to "destroy", post_comment_path(comment.post, comment), method: :delete %></p>
-            <% end %>
+            <div class="row mt-3 border-bottom">
+              <div class="col-2">
+                <%= link_to customer_path(comment.customer) do %>
+                  <u class="text-dark"><%= comment.customer.name %></u>
+                <% end %>
+              </div>
+              <div class="col-7"><%= comment.comment %></div>
+              <div class="col-2"><%= comment.created_at.strftime('%y.%m.%d') %></div>
+              <% if comment.customer == current_customer %>
+                <div class="col-1">
+                  <%= link_to "✖︎", post_comment_path(comment.post, comment), method: :delete, data: { confirm: "本当に削除しますか？"} %>
+                </div>
+              <% end %>
+            </div>
           <% end %>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-8">
-          <%= form_with model: [@post, @comment] do |f| %>
-            <%= f.text_field :comment, placeholder: "here", class: "form-control" %>
-            <%= f.submit "send", class: "btn btn-outline-info btn-sm" %>
-          <% end %>
+          <div class="row mt-3">
+            <div class="col-12">
+              <%= form_with model: [@post, @comment] do |f| %>
+               <div class="row">
+                <div class="col-10">
+                  <%= f.text_field :comment, placeholder: "comment", class: "form-control form-control-sm" %>
+                </div>
+                <div class="col-2">
+                  <%= f.submit "send", class: "btn btn-outline-info btn-sm btn-block" %>
+                </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
         </div>
       </div>
 

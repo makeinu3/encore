@@ -8,6 +8,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
+    @customer_posts = Post.where(customer_id: @customer).order("created_at DESC")
     # ジャンルごとの投稿数
     @genre1_posts = Post.where(genre_id: 1, customer_id: @customer)
     @genre2_posts = Post.where(genre_id: 2, customer_id: @customer)
@@ -21,7 +22,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     @customer.update(customer_params)
-    render :show
+    render :my_page
   end
 
   # いいねした投稿一覧

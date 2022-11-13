@@ -5,26 +5,32 @@
       <div class="row">
         <div class="col-md-8 p-5">
           <form class="form-inline d-flex justify-content-between">
-          <h5><%= @customer.name %></h5>
+            <h5><%= @customer.name %></h5>
+            <div class="col-6">
+              <%= link_to @customer.followers.count, customer_followers_path(@customer), class: "text-dark" %>&emsp;Followers
+              &emsp;&emsp;
+              <%= link_to @customer.followings.count, customer_followings_path(@customer), class: "text-dark" %>&emsp;Following
+            </div>
             <div class="col-2">
               <%= render 'public/relationships/btn', customer: @customer %>
             </div>
           </form>
-          <div class="row">
+
+          <div class="row mt-3">
             <div class="col-4">
-              <table class="table">
-                <tr>
-                  <td>フォロー</td>
-                  <td><%= @customer.followings.count %></td>
-                </tr>
-                <tr>
-                  <td>フォロワー</td>
-                  <td><%= @customer.followers.count %></td>
-                </tr>
-              </table>
+              <div class="box p-4">
+                <p>favorite</p>
+                <p><%= @customer.my_fave %></p>
+              </div>
             </div>
-            <div class="col-8"></div>
+            <div class="col-8">
+              <div class="box p-4">
+                <p>about me</p>
+                <p><%= @customer.introduction %></p>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 
@@ -48,16 +54,23 @@
                 </tr>
               </table>
             </div>
+            <div class="col-8">
+              <% @customer_posts.each do |post| %>
+                <%= post.show_date.strftime('%m.%d') %>&emsp;
+                <u><%= link_to post.show_name, post_path(post), class: "text-dark" %></u>
+              <% end %>
+            </div>
+          </div>
 
-        <div class="col-4">
-          <%= @customer.introduction %>
+          <div class="row mt-3">
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
+            </div>
+          </div>
+
         </div>
       </div>
-
-        </div>
-      </div>
-
-
 
       <%= link_to "likes", likes_customer_path(@customer) %>
 

@@ -8,6 +8,17 @@
           <h5>
             <u><%= link_to @post.customer.name, customer_path(@post.customer), class: "text-dark" %></u>
           </h5>
+          <div class="col-12 text-right">
+            <% if @post.customer == current_customer %>
+              <%= link_to edit_post_path(@post), class: "text-dark" do %>
+                <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+              <% end %>
+              &emsp;
+              <%= link_to post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "text-dark" do %>
+                <i class="far fa-trash-alt" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+          </div>
           <div class="row">
             <div class="col-5">
               <%= image_tag @post.image, width: "100%" %>
@@ -30,19 +41,9 @@
           </div>
 
           <div class="row mt-3">
-            <% if @post.customer == current_customer %>
-              <div class="col-6"></div>
-              <div class="col-2">
-                <%= link_to "edit", edit_post_path(@post), class: "btn btn-outline-success btn-sm btn-block" %>
-              </div>
-              <div class="col-2">
-                <%= link_to "destroy", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger btn-sm btn-block" %>
-              </div>
-            <% else %>
-              <div class="col-10"></div>
-            <% end %>
+            <div class="col-10"></div>
             <div class="col-2">
-              <%= render 'layouts/back_btn' %>
+              <%= link_to 'back', posts_path, class: "btn btn-outline-dark btn-sm btn-block" %>
             </div>
           </div>
 

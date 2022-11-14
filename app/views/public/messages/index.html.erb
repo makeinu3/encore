@@ -5,6 +5,13 @@
 
       <div class="row">
         <div class="col-md-8 p-5">
+          <h4 class="text-center">Thanks</h4>
+
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-8 p-5">
           <h4>お客様ノート</h4>
           <% @messages.each do |message| %>
             <div class="row mt-3 border-bottom">
@@ -17,7 +24,9 @@
               </div>
               <% if message.customer == current_customer %>
                 <div class="col-1">
-                  <%= link_to "✖︎",message_path(message), method: :delete, data: { confirm: "本当に削除しますか？"} %>
+                  <%= link_to message_path(message), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "text-dark" do %>
+                    <i class="far fa-trash-alt" aria-hidden="true"></i>
+                  <% end %>
                 </div>
               <% end %>
             </div>

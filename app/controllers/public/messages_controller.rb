@@ -6,6 +6,8 @@ class Public::MessagesController < ApplicationController
   def index
     @messages = Message.all.includes(:customer)
     @message = Message.new
+    # Thanksのカウント用
+    
   end
 
   def create

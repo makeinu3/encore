@@ -22,6 +22,10 @@ class Customer < ApplicationRecord
   validates :my_fave, presence: true, length: { maximum: 20 }
   validates :introduction, presence: true,length: { maximum: 300 }
 
+  # 公開/非公開
+  scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where(published: false) }
+
 
   # フォローしたとき
   def follow(customer_id)

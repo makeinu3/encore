@@ -46,9 +46,22 @@
             </div>
 
             <div class="row mt-3">
+              <div class="col-3">
+                <%= f.label :published, "アカウント公開" %>
+              </div>
+              <div class="col-8 offset-1">
+                <%= f.radio_button :published, true, checked: true %>
+                <%= f.label :published, "公開", value: true %>
+                &emsp;
+                <%= f.radio_button :published, false %>
+                <%= f.label :published, "非公開", value: false %>
+              </div>
+            </div>
+
+            <div class="row mt-3">
               <div class="col-3"></div>
               <div class="col-2 offset-1">
-                <%= f.submit "保存", class: "btn btn-outline-info btn-sm btn-block" %>
+                <%= f.submit "保存", class: "btn btn-outline-success btn-sm btn-block" %>
               </div>
             </div>
 

@@ -1,14 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto my-5">
-      <h4>likes index</h4>
+    <div class="col-md-12 my-3">
+      <p class="notice"><%= notice %></p>
 
       <div class="row">
-        <div class="col-md-8">
-          <% @like_posts.each do |post| %>
-            <%= image_tag post.image, width: "30%" %>
-            <%= post.title %>
-          <% end %>
+        <div class="col-md-10 p-5">
+          <h4>いいねした投稿一覧</h4>
+          <div class="row mt-3">
+            <% @like_posts.each do |post| %>
+              <div class="col-3">
+                <%= link_to post_path(post) do %>
+                  <%= image_tag post.image, width: "100%" %>
+                  <div class="text-dark text-center"><%= post.title %></div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
+            </div>
+          </div>
+
         </div>
       </div>
 

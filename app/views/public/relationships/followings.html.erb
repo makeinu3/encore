@@ -4,7 +4,34 @@
 
       <div class="row">
         <div class="col-md-8 p-5">
-          <h4>フォロー 一覧</h4>
+          <h4>フォロー</h4>
+
+          <div class="row">
+            <div class="col-12">
+              <% if @customers.count == 0 %>
+                <p>フォローしているユーザーはいません。</p>
+              <% else %>
+                <% @customers.each do |customer| %>
+                  <div class="row p-2">
+                    <div class="col-8">
+                      <u><%= link_to customer.name, customer_path(customer), class: "text-dark" %></u>
+                    </div>
+                    <div class="col-2">
+                      <%= render 'public/relationships/btn', customer: customer %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
+            </div>
+          </div>
+
         </div>
       </div>
 

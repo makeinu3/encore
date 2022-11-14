@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 my-3">
+      <p class="notice"><%= notice %><%= alert %></p>
 
       <div class="row">
         <div class="col-md-8 p-5">
@@ -12,7 +13,12 @@
               <%= link_to @customer.followings.count, customer_followings_path(@customer), class: "text-dark" %>&emsp;Following
             </div>
             <div class="col-2">
-              <%= render 'public/relationships/btn', customer: @customer %>
+              <% if @customer == current_customer %>
+                <%= link_to "編集", edit_customer_path(current_customer), class: "btn btn-outline-success btn-sm btn-block" %>
+                <%= link_to "退会", confirm_unsubscribe_path, class: "btn btn-outline-danger btn-sm btn-block" %>
+              <% else %>
+                <%= render 'public/relationships/btn', customer: @customer %>
+              <% end %>
             </div>
           </form>
 
@@ -42,22 +48,27 @@
               <table class="table">
                 <tr>
                   <td>ライブ</td>
-                  <td><%= @genre1_posts.count %></td>
+                  <td>count</td>
                 </tr>
                 <tr>
                   <td>舞台</td>
-                  <td><%= @genre2_posts.count %></td>
+                  <td>count</td>
                 </tr>
                 <tr>
                   <td>ミュージカル</td>
-                  <td><%= @genre3_posts.count %></td>
+                  <td>count</td>
                 </tr>
               </table>
+              <div class="row mt-5 ml-2">
+                <u>️<%= link_to "いいねした投稿", likes_customer_path(@customer), class: "text-dark" %></u>
+              </div>
             </div>
             <div class="col-8">
               <% @customer_posts.each do |post| %>
-                <%= post.show_date.strftime('%m.%d') %>&emsp;
-                <u><%= link_to post.show_name, post_path(post), class: "text-dark" %></u>
+                <p>
+                  <%= post.show_date.strftime('%m.%d') %>&emsp;
+                  <u><%= link_to post.show_name, post_path(post), class: "text-dark" %></u>
+                </p>
               <% end %>
             </div>
           </div>
@@ -71,8 +82,6 @@
 
         </div>
       </div>
-
-      <%= link_to "likes", likes_customer_path(@customer) %>
 
     </div>
   </div>

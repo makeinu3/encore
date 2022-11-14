@@ -11,17 +11,7 @@
           <div class="row">
             <div class="col-5">
               <%= image_tag @post.image, width: "100%" %>
-              <p>
-                <% if @post.liked_by?(current_customer) %>
-                  <%= link_to post_likes_path(@post), method: :delete do %>
-                    ♥ <%= @post.likes.count %> likes
-                  <% end %>
-                <% else %>
-                  <%= link_to post_likes_path(@post), method: :post do %>
-                    ♡ <%= @post.likes.count %> likes
-                  <% end %>
-                <% end %>
-              </p>
+              <p><%= render 'public/likes/like_btn', post: @post %></p>
              </div>
             <div class="col-7">
               <h5><strong><%= @post.title %></strong></h5>
@@ -80,7 +70,7 @@
 
           <div class="row mt-3">
             <div class="col-12">
-              <%= form_with model: [@post, @comment] do |f| %>
+              <%= form_with model: [@post, @comment], local: false do |f| %>
                <div class="row">
                 <div class="col-10">
                   <%= f.text_field :comment, placeholder: "comment", class: "form-control form-control-sm" %>

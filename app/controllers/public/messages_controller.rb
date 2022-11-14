@@ -4,7 +4,7 @@ class Public::MessagesController < ApplicationController
   before_action :set_message, only: [:destroy]  # Message.find(params[:id])
 
   def index
-    @messages = Message.all.includes(:customer).order("created_at DESC")
+    @messages = Message.all.includes(:customer)
     @message = Message.new
   end
 

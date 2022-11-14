@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :likes]  # Customer.find(params[:id])
 
   def show
-    @customer_posts = Post.where(customer_id: @customer).order("created_at DESC")
+    @customer_posts = Post.where(customer_id: @customer).order("show_date DESC")
     # ジャンルごとの投稿(仮)
     @genre1_posts = Post.where(genre_id: 1, customer_id: @customer)
     @genre2_posts = Post.where(genre_id: 2, customer_id: @customer)
@@ -15,7 +15,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer_posts = Post.where(customer_id: @customer).order("created_at DESC")
+    @customer_posts = Post.where(customer_id: @customer).order("show_date DESC")
     if @customer.update(customer_params)
       render :show
     else

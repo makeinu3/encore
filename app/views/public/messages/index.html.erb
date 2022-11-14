@@ -1,29 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto my-5">
-      <h4>お客様ノート</h4>
+    <div class="col-md-12 my-3">
+      <p class="notice"><%= notice %></p>
 
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 p-5">
+          <h4>お客様ノート</h4>
           <% @messages.each do |message| %>
-            <p>
-              <%= message.created_at.strftime('%Y/%m/%d') %>
-              <%= message.message %>
-              <%= message.customer.name %>
+            <div class="row mt-3 border-bottom">
+              <div class="col-2"><%= message.created_at.strftime('%y.%m.%d') %></div>
+              <div class="col-7"><%= message.message %></div>
+              <div class="col-2">
+                <%= link_to customer_path(message.customer), class: "text-dark" do %>
+                  <u><%= message.customer.name %></u>
+                <% end %>
+              </div>
               <% if message.customer == current_customer %>
-                <%= link_to "削除", message_path(message), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+                <div class="col-1">
+                  <%= link_to "✖︎",message_path(message), method: :delete, data: { confirm: "本当に削除しますか？"} %>
+                </div>
               <% end %>
-            </p>
+            </div>
           <% end %>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-8">
-          <%= form_with model: @message do |f| %>
-            <%= f.text_field :message, placefolder: "message here", class: "form-control" %>
-            <%= f.submit "send", class: "btn btn-info btn-sm" %>
-          <% end %>
+          <div class="row mt-3">
+            <div class="col-12">
+              <%= form_with model: [@message], local: false do |f| %>
+               <div class="row">
+                <div class="col-10">
+                  <%= f.text_field :message, placeholder: "message", class: "form-control form-control-sm" %>
+                </div>
+                <div class="col-2">
+                  <%= f.submit "send", class: "btn btn-outline-info btn-sm btn-block" %>
+                </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
         </div>
       </div>
 

@@ -4,8 +4,8 @@ class Public::PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]  # Post.find(params[:id])
 
   def index
-    @search = Post.ransack(params[:q])  # 検索
-    @posts = @search.result             # 検索結果
+    @search = Post.publish_posts.ransack(params[:q])  # 検索
+    @posts = @search.result                           # 検索結果
   end
 
   def show

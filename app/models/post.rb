@@ -16,6 +16,11 @@ class Post < ApplicationRecord
   validates :show_date, presence: true
 
 
+  # 公開/非公開
+  scope :publish_posts, -> { where(customer: Customer.publish) }
+  scope :unpublish_posts, -> { where(published: false) }
+
+
   def liked_by?(customer)
     likes.exists?(customer_id: customer.id)
   end

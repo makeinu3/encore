@@ -4,7 +4,7 @@ class Public::HomesController < ApplicationController
   end
 
   def top
-    @posts = Post.limit(9).order("created_at DESC")
+    @posts = Post.publish_posts.limit(6).order("created_at DESC")
   end
 
   def about

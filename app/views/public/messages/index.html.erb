@@ -21,14 +21,22 @@
             <div class="col-12">
               <%= form_with model: [@message], local: false do |f| %>
                <div class="row">
-                <div class="col-10">
+                <div class="col-9 offset-1">
                   <%= f.text_field :message, placeholder: "message", class: "form-control form-control-sm" %>
                 </div>
-                <div class="col-2">
-                  <%= f.submit "send", class: "btn btn-outline-info btn-sm btn-block" %>
+                <div class="col-1">
+                  <%= f.button :type => "submit", style: 'border-style: none; background: none;' do %>
+                    <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                  <% end %>
                 </div>
                 </div>
               <% end %>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-12">
+              <%= render 'layouts/back_btn' %>
             </div>
           </div>
 

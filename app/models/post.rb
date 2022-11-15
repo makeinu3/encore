@@ -18,8 +18,10 @@ class Post < ApplicationRecord
 
   # 公開/非公開
   scope :publish_posts, -> { where(customer: Customer.publish) }
-  scope :unpublish_posts, -> { where(published: false) }
+  scope :unpublish_posts, -> { where(customer: Customer.unpublish) }
 
+  # ジャンル名でも検索できるようにする
+  scope :genre_name, -> { where(genre: Genre.name) }
 
   def liked_by?(customer)
     likes.exists?(customer_id: customer.id)

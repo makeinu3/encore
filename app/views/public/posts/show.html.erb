@@ -35,9 +35,10 @@
           <div class="row mt-2">
             <div class="col-12">
               <div align="right">
-                 <%= @post.place %>
-                 「<%= @post.show_name %>」
-                 <%= @post.show_date.strftime('%Y.%m.%d') %>
+                <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= @post.genre.name %><br>
+                <%= @post.place %>
+                「<%= @post.show_name %>」
+                <%= @post.show_date.strftime('%Y.%m.%d') %>
               </div>
             </div>
           </div>
@@ -62,11 +63,13 @@
             <div class="col-12">
               <%= form_with model: [@post, @comment], local: false do |f| %>
                <div class="row">
-                <div class="col-10">
+                <div class="col-9 offset-1">
                   <%= f.text_field :comment, placeholder: "comment", class: "form-control form-control-sm" %>
                 </div>
-                <div class="col-2">
-                  <%= f.submit "send", class: "btn btn-outline-info btn-sm btn-block" %>
+                <div class="col-1">
+                  <%= f.button :type => "submit", style: 'border-style: none; background: none;' do %>
+                    <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                  <% end %>
                 </div>
                 </div>
               <% end %>

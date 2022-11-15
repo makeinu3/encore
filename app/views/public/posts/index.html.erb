@@ -1,44 +1,37 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 my-3">
-      <p class="notice"><%= notice %></p>
+  <div class="row my-4">
+    <div class="col-md-10 p-5">
 
-      <div class="row">
-        <div class="col-md-10 p-5">
-          <form class="form-inline d-flex justify-content-between">
-            <h4>投稿一覧</h4>
-            <div align="right">
-              <%= search_form_for @search, url: posts_path do |f| %>
-                <%= f.search_field :title_or_place_or_show_name_or_genre_name_cont, placeholder: "公演名、会場名など", class: "form-control form-control-sm" %>
-                <%= f.submit "search", class: "btn btn-outline-info btn-sm" %>
-              <% end %>
-            </div>
-          </form>
+      <form class="form-inline d-flex justify-content-between">
+        <h4>投稿一覧</h4>
+        <div align="right">
+          <%= search_form_for @search, url: posts_path do |f| %>
+            <%= f.search_field :title_or_place_or_show_name_or_show_date_or_genre_name_or_customer_name_or_customer_my_fave_cont, placeholder: "公演名、会場名など", class: "form-control form-control-sm" %>
+            <%= f.submit "search", class: "btn btn-outline-info btn-sm" %>
+           <% end %>
+        </div>
+      </form>
 
-          <div class="row mt-3">
-            <% if @posts.count == 0 %>
-              <div class="col-12 text-center">
-                <p>当てはまる投稿が見つかりませんでした。</p>
-              </div>
-            <% end %>
-            <% @posts.each do |post| %>
-              <div class="col-3 p-3">
-                <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %>
-                <%= link_to post_path(post) do %>
-                  <%= image_tag post.image, width: "100%" %>
-                  <div class="text-dark text-center"><%= post.title %></div>
-                <% end %>
-              </div>
+      <div class="row mt-3">
+        <% if @posts.count == 0 %>
+          <div class="col-12 text-center">
+            <p>当てはまる投稿が見つかりませんでした。</p>
+          </div>
+        <% end %>
+        <% @posts.each do |post| %>
+          <div class="col-3 p-3">
+            <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %>
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.image, width: "100%" %>
+              <div class="text-dark text-center"><%= post.title %></div>
             <% end %>
           </div>
+        <% end %>
+      </div>
 
-          <div class="row mt-5">
-            <div class="col-10"></div>
-            <div class="col-2">
-              <%= render 'layouts/back_btn' %>
-            </div>
-          </div>
-
+      <div class="row mt-3">
+        <div class="col-6 mx-auto">
+          <%= paginate @posts %>
         </div>
       </div>
 

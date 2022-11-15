@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 my-3">
+  <div class="row my-4">
+    <div class="col-md-12">
       <p class="notice"><%= notice %></p>
 
       <div class="row">
@@ -28,7 +28,9 @@
             </div>
             <div class="col-7">
               <h5><strong><%= @post.title %></strong></h5>
-              <div class="p-3"><%= @post.body %></div>
+              <div class="p-3">
+                <%= safe_join(@post.body.split("\n"),tag(:br)) %>
+              </div>
             </div>
           </div>
 
@@ -44,8 +46,7 @@
           </div>
 
           <div class="row mt-3">
-            <div class="col-10"></div>
-            <div class="col-2">
+            <div class="col-12">
               <%= render 'layouts/back_btn' %>
             </div>
           </div>

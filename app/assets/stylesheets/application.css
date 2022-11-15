@@ -37,7 +37,7 @@ main {
 
 .col-md-3, .col-md-8, .col-md-10 {
   height: 100%;
-  margin: 2em auto;
+  margin: 0 auto;
   background-color: #fbfaf5;
   border-radius: 50px;
 }
@@ -53,6 +53,23 @@ main {
   height: 13em;
   width: 13em;
   background-color: rgba(252, 200, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page, .first, .prev, .next, .last {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page.current {
+  height: 30px;
+  width: 30px;
+  background-color: rgba(233, 84, 100, 0.3);
   border-radius: 50%;
   display: flex;
   justify-content: center;

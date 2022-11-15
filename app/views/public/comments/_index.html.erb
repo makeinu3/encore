@@ -1,0 +1,18 @@
+<% post.comments.each do |comment| %>
+  <div class="row mt-3 border-bottom">
+    <div class="col-2">
+      <%= link_to customer_path(comment.customer) do %>
+        <u class="text-dark"><%= comment.customer.name %></u>
+      <% end %>
+    </div>
+    <div class="col-7"><%= comment.comment %></div>
+    <div class="col-2"><%= comment.created_at.strftime('%y.%m.%d') %></div>
+      <% if comment.customer == current_customer %>
+        <div class="col-1">
+          <%= link_to post_comment_path(comment.post, comment), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "text-dark" do %>
+            <i class="far fa-trash-alt" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>

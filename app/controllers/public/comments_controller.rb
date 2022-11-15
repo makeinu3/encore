@@ -3,14 +3,16 @@ class Public::CommentsController < ApplicationController
   before_action :redirect_welcome
 
   def create
-    post = Post.find(params[:post_id])
-    comment = current_customer.comments.new(comment_params)
-    comment.post_id = post.id
-    comment.save
+    @post = Post.find(params[:post_id])
+    @comment = current_customer.comments.new(comment_params)
+    @comment.post_id = @post.id
+    @comment.save
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
   end
 
 

@@ -1,0 +1,18 @@
+<% messages.each do |message| %>
+  <div class="row mt-3 border-bottom">
+    <div class="col-2"><%= message.created_at.strftime('%y.%m.%d') %></div>
+    <div class="col-7"><%= message.message %></div>
+    <div class="col-2">
+      <%= link_to customer_path(message.customer), class: "text-dark" do %>
+        <u><%= message.customer.name %></u>
+      <% end %>
+    </div>
+    <% if message.customer == current_customer %>
+      <div class="col-1">
+        <%= link_to message_path(message), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "text-dark" do %>
+          <i class="far fa-trash-alt" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -7,19 +7,19 @@ class Public::MessagesController < ApplicationController
     @messages = Message.all.includes(:customer)
     @message = Message.new
     # Thanksのカウント用
-    
+
   end
 
   def create
+    @messages = Message.all.includes(:customer)
     @message = Message.new(message_params)
     @message.customer_id = current_customer.id
     @message.save
-    redirect_to messages_path
   end
 
   def destroy
+    @messages = Message.all.includes(:customer)
     @message.destroy
-    redirect_to messages_path
   end
 
 

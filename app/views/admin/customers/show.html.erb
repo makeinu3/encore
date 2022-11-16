@@ -1,54 +1,60 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 my-3">
-      <p class="notice"><%= notice %><%= alert %></p>
+  <div class="row my-4">
+    <div class="col-md-12">
+      <p class="notice"><%= notice %></p>
 
-      <div class="row my-3">
-        <div class="col-md-3 p-5">
+      <div class="row">
+        <div class="col-md-3 mb-3 p-5">
           <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
         </div>
 
         <div class="col-md-8 p-5">
-          <form class="form-inline d-flex justify-content-between">
+          <form class="form-inline d-flex justify-content-between mb-3">
             <h4><%= @customer.name %> さま</h4>
             <div align="right">
-              Follow : <%= @customer.followings.count %> |
-              Follower : <%= @customer.followers.count %> |
-              Posts : <%= @customer.posts.count %>
+              Follow :&emsp;<%= @customer.followings.count %>&emsp;|&emsp;
+              Follower :&emsp;<%= @customer.followers.count %>&emsp;|&emsp;
+              Posts :&emsp;<%= @customer.posts.count %>
             </div>
           </form>
 
-          <div class="row mt-3">
+          <div class="row mb-3">
              <div class="col-3">会員ID</div>
             <div class="col-8 offset-1"><%= @customer.id %></div>
           </div>
 
-          <div class="row mt-3">
+          <div class="row mb-3">
             <div class="col-3">お名前</div>
             <div class="col-8 offset-1"><%= @customer.name %></div>
           </div>
 
-          <div class="row mt-3">
+          <div class="row mb-3">
             <div class="col-3">メールアドレス</div>
             <div class="col-8 offset-1"><%= @customer.email %></div>
           </div>
 
-          <div class="row mt-3">
+          <div class="row mb-3">
             <div class="col-3">自己紹介</div>
-            <div class="col-8 offset-1"><%= @customer.introduction %></div>
+            <div class="col-8 offset-1"><%= safe_join(@customer.introduction.split("\n"),tag(:br)) %></div>
           </div>
 
-          <div class="row mt-3">
+          <div class="row mb-3">
             <div class="col-3">好きなひと</div>
             <div class="col-8 offset-1"><%= @customer.my_fave %></div>
           </div>
 
-          <div class="row mt-3">
+          <div class="row mb-3">
             <div class="col-3">公開/非公開</div>
-            <div class="col-8 offset-1"></div>
+            <div class="col-8 offset-1">
+              <% if @customer.published == true %>
+                公開
+              <% else %>
+                非公開
+              <% end %>
+            </div>
           </div>
 
-          <div class="row mt-3">
+          <div class="row">
             <div class="col-3">退会ステータス</div>
             <div class="col-8 offset-1">
               <% if @customer.is_deleted == false %>
@@ -59,13 +65,12 @@
             </div>
           </div>
 
-          <div class="row mt-5">
-            <div class="col-8"></div>
-            <div class="col-2">
-              <%= link_to "edit", edit_admin_customer_path(@customer), class: "btn btn-outline-success btn-sm btn-block" %>
-            </div>
+          <div class="row mt-5 d-flex justify-content-between">
             <div class="col-2">
               <%= render 'layouts/back_btn' %>
+            </div>
+            <div class="col-2">
+              <%= link_to "edit", edit_admin_customer_path(@customer), class: "btn btn-outline-success btn-sm btn-block" %>
             </div>
           </div>
 

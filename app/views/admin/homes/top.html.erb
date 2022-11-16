@@ -1,30 +1,40 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 my-3">
+  <div class="row my-4">
+    <div class="col-md-12">
       <p class="notice"><%= notice %></p>
 
-      <div class="row my-3">
-        <div class="col-md-3 p-5">
+      <div class="row">
+        <div class="col-md-3 mb-3 p-5">
           <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
         </div>
 
         <div class="col-md-8 p-5">
-          <div class="row">
-            <div class="col-12">
-              <h4>新着投稿</h4>
-              <div class="row mt-3">
-                <% @new_posts.each do |new_post| %>
-                  <div class="col-3">
-                    <%= link_to admin_post_path(new_post) do %>
-                      <%= image_tag new_post.image, width: "100%" %>
-                      <div class="text-dark text-center"><%= new_post.title %></div>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
+          <h4 class="mb-3">新規会員</h4>
+          <div class="row mb-5">
+            <table class="table">
+              <% @new_customers.each do |customer| %>
+                <tr>
+                  <td><u><%= link_to customer.name, admin_customer_path(customer), class: "link" %></u> さま</td>
+                  <td>favorite:&emsp;<%= customer.my_fave %></td>
+                  <td>posts:&emsp;<%= customer.posts.count %></td>
+                </tr>
+              <% end %>
+            </table>
           </div>
 
+          <h4 class="mb-3">新着投稿</h4>
+          <div class="row mb-3">
+            <% @new_posts.each do |post| %>
+              <div class="col-md-3 p-3 text-center">
+                <%= link_to admin_post_path(post), class: "link" do %>
+                  <%= image_tag post.image, class: "image" %><br>
+                  <%= post.title %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
       </div>
 
     </div>

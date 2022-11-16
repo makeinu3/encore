@@ -1,3 +1,16 @@
 // Place all the styles related to the admin/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.col-md-3 {
+  height: 100%;
+  margin: 0 auto;
+  background-color: #fbfaf5;
+  border-radius: 50px;
+}

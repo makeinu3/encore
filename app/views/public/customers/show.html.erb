@@ -60,28 +60,23 @@
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <div class="col-md-8 p-5">
           <% if @customer.published == false && @customer != current_customer %>
-            <div class="col-12 text-center">
-              <p>このアカウントは非公開アカウントです。</p>
-            </div>
+            <p class="text-center">このアカウントは非公開アカウントです。</p>
           <% else %>
-
-            <div class="row mt-3">
-              <div class="col-4">
-                <h6>投稿</h6>
-
-
-              </div>
-              <div class="col-8">
-                <% @customer_posts.each do |post| %>
-                  <p>
-                    <%= post.show_date.strftime('%m.%d') %>&emsp;
-                    <u><%= link_to post.show_name, post_path(post), class: "text-dark" %></u>
-                  </p>
-                <% end %>
-              </div>
+            <div class="post-list">
+              <% @customer_posts.each do |post| %>
+                <div class="row">
+                  <div class="col-12">
+                    <p>
+                      <%= post.show_date.strftime('%y.%m.%d') %>&emsp;<%= post.show_name %><br>
+                      <strong><%= post.title %></strong><br>
+                      <%= safe_join(post.body.split("\n"),tag(:br)) %>
+                    </p>
+                  </div>
+                </div>
+              <% end %>
             </div>
           <% end %>
 

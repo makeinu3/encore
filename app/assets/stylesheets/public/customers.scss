@@ -15,3 +15,10 @@
   background-color: #fffffc;
   border-radius: 5px;
 }
+
+/* showページの投稿リスト */
+.post-list {
+  height: 300px;
+  overflow-y: scroll;
+  position: relative;
+}

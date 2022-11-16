@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     get '/' => 'homes#top', as: 'top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :posts, only: [:index, :show]
+
+    resources :posts, only: [:index, :show] do
+      resources :comments, only: [:destroy]
+    end
+
     resources :messages, only: [:index, :destroy]
   end
 

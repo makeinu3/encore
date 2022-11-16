@@ -1,0 +1,14 @@
+<% messages.each do |message| %>
+  <div class="row mt-3 border-bottom">
+    <div class="col-2"><%= message.created_at.strftime('%y.%m.%d') %></div>
+    <div class="col-7"><%= message.message %></div>
+    <div class="col-2">
+      <u><%= link_to message.customer.name, admin_customer_path(message.customer), class: "link" %></u>
+    </div>
+    <div class="col-1">
+      <%= link_to admin_message_path(message), method: :delete, remote: true, data: { confirm: "本当に削除しますか？"}, class: "link" do %>
+        <i class="fa-solid fa-delete-left" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

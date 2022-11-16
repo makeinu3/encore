@@ -1,16 +1,16 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 my-3">
+  <div class="row mt-3 mb-4">
+    <div class="col-md-12">
       <p class="notice"><%= notice %></p>
 
       <div class="row">
         <div class="col-md-8 p-5">
-          <h4>新規投稿</h4>
+          <h4 class="mb-3">新規投稿</h4>
 
           <div class="row">
             <div class="col-12">
               <%= form_with model: @post, url: posts_path do |f| %>
-                <div class="row mt-2">
+                <div class="row mb-3">
                   <div class="col-3">
                     <%= f.label :genre_id, "ジャンル" %>
                   </div>
@@ -18,7 +18,8 @@
                     <%= f.collection_select :genre_id, Genre.all, :id, :name, class: "form-control" %>
                   </div>
                 </div>
-                <div class="row mt-2">
+
+                <div class="row mb-3">
                   <div class="col-3">
                     <%= f.label :title, "タイトル" %>
                   </div>
@@ -26,7 +27,8 @@
                     <%= f.text_field :title, class: "form-control" %>
                   </div>
                 </div>
-                <div class="row mt-2">
+
+                <div class="row mb-3">
                   <div class="col-3">
                     <%= f.label :body, "本文" %>
                   </div>
@@ -34,7 +36,8 @@
                     <%= f.text_area :body, class: "form-control" %>
                   </div>
                 </div>
-                <div class="row mt-2">
+
+                <div class="row mb-3">
                   <div class="col-3">
                     <%= f.label :image, "画像" %>
                   </div>
@@ -42,7 +45,8 @@
                     <%= f.file_field :image, accept: "image/*" %>
                   </div>
                 </div>
-                <div class="row mt-2">
+
+                <div class="row mb-3">
                   <div class="col-3">
                     <%= f.label :place, "会場名" %>
                   </div>
@@ -50,7 +54,8 @@
                     <%= f.text_field :place, class: "form-control" %>
                   </div>
                 </div>
-                <div class="row mt-2">
+
+                <div class="row mb-3">
                   <div class="col-3">
                     <%= f.label :show_name, "公演名" %>
                   </div>
@@ -58,7 +63,8 @@
                     <%= f.text_field :show_name, class: "form-control" %>
                   </div>
                 </div>
-                <div class="row mt-2">
+
+                <div class="row">
                   <div class="col-3">
                     <%= f.label :show_date, "公演日" %>
                   </div>
@@ -66,16 +72,17 @@
                     <%= f.date_field :show_date, class: "form-control" %>
                   </div>
                 </div>
-                <div class="row mt-5">
-                  <div class="col-8"></div>
-                  <div class="col-2">
-                    <%= f.submit "post", class: "btn btn-outline-warning btn-sm btn-block" %>
-                  </div>
+
+                <div class="row mt-5 d-flex justify-content-between">
                   <div class="col-2">
                     <%= render 'layouts/back_btn' %>
                   </div>
+                  <div class="col-2">
+                    <%= f.submit "post", class: "btn btn-outline-warning btn-sm btn-block" %>
+                  </div>
                 </div>
               <% end %>
+
             </div>
           </div>
 

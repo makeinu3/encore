@@ -1,25 +1,24 @@
 <div class="container">
-  <div class="row my-4">
+  <div class="row mt-3 mb-4">
     <div class="col-md-12">
       <p class="notice"><%= notice %></p>
 
       <div class="row">
-        <div class="col-md-8 p-5">
-          <h5>
-            <u><%= link_to @post.customer.name, customer_path(@post.customer), class: "text-dark" %></u>
-          </h5>
+        <div class="col-md-8 mb-3 p-5">
+          <h5><u><%= link_to @post.customer.name, customer_path(@post.customer), class: "link" %></u></h5>
           <div class="col-12 text-right">
             <% if @post.customer == current_customer %>
-              <%= link_to edit_post_path(@post), class: "text-dark" do %>
+              <%= link_to edit_post_path(@post), class: "link" do %>
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i>
               <% end %>
               &emsp;
-              <%= link_to post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "text-dark" do %>
+              <%= link_to post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "link" do %>
                 <i class="far fa-trash-alt" aria-hidden="true"></i>
               <% end %>
             <% end %>
           </div>
-          <div class="row">
+
+          <div class="row mb-3">
             <div class="col-5">
               <%= image_tag @post.image, width: "100%" %>
               <div id="post_<%= @post.id %>">
@@ -34,7 +33,7 @@
             </div>
           </div>
 
-          <div class="row mt-2">
+          <div class="row">
             <div class="col-12">
               <div align="right">
                 <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= @post.genre.name %><br>
@@ -45,7 +44,7 @@
             </div>
           </div>
 
-          <div class="row mt-3">
+          <div class="row mt-5">
             <div class="col-12">
               <%= render 'layouts/back_btn' %>
             </div>
@@ -54,7 +53,7 @@
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row">
         <div class="col-md-8 p-5">
           <div class="comments">
             <%= render 'public/comments/index', post: @post %>
@@ -63,15 +62,15 @@
           <div class="row mt-3">
             <div class="col-12">
               <%= form_with model: [@post, @comment], local: false do |f| %>
-               <div class="row">
-                <div class="col-9 offset-1">
-                  <%= f.text_field :comment, placeholder: "comment", class: "form-control form-control-sm" %>
-                </div>
-                <div class="col-1">
-                  <%= f.button :type => "submit", style: 'border-style: none; background: none;' do %>
-                    <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
-                  <% end %>
-                </div>
+                <div class="row">
+                  <div class="col-9 offset-1">
+                    <%= f.text_field :comment, placeholder: "comment", class: "form-control form-control-sm" %>
+                  </div>
+                  <div class="col-1">
+                    <%= f.button :type => "submit", style: 'border-style: none; background: none;' do %>
+                      <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                    <% end %>
+                  </div>
                 </div>
               <% end %>
             </div>

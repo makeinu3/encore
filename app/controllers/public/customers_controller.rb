@@ -5,10 +5,6 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer_posts = Post.where(customer_id: @customer).order("show_date DESC")
-    # ジャンルごとの投稿(仮)
-    @genre1_posts = Post.where(genre_id: 1, customer_id: @customer)
-    @genre2_posts = Post.where(genre_id: 2, customer_id: @customer)
-    @genre3_posts = Post.where(genre_id: 3, customer_id: @customer)
   end
 
   def edit

@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 my-3">
+  <div class="row mt-3 my-4">
+    <div class="col-md-12">
       <p class="notice"><%= notice %><%= alert %></p>
 
       <div class="row">
-        <div class="col-md-8 p-5">
+        <div class="col-md-8 mb-3 p-5">
           <form class="form-inline d-flex justify-content-between">
             <h5>
               <%= @customer.name %>
@@ -12,7 +12,7 @@
                 <i class="fas fa-key"></i>
               <% end %>
             </h5>
-            <div class="col-6">
+            <div class="col-5">
               <% if @customer.published == false && @customer != current_customer %>
                 <%= @customer.followers.count %>&emsp;Followers
                 &emsp;&emsp;
@@ -22,6 +22,9 @@
                 &emsp;&emsp;
                 <%= link_to @customer.followings.count, customer_followings_path(@customer), class: "text-dark" %>&emsp;Following
               <% end %>
+            </div>
+            <div class="col-2">
+              ️<%= link_to "likes", likes_customer_path(@customer), class: "link" %>
             </div>
             <div class="col-2">
               <% if @customer == current_customer %>
@@ -43,8 +46,14 @@
             <div class="col-8">
               <div class="box p-4">
                 <p>me</p>
-                <p><%= @customer.introduction %></p>
+                <p><%= safe_join(@customer.introduction.split("\n"),tag(:br)) %></p>
               </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-2">
+              <%= render 'layouts/back_btn' %>
             </div>
           </div>
 
@@ -62,23 +71,8 @@
             <div class="row mt-3">
               <div class="col-4">
                 <h6>投稿</h6>
-                <table class="table">
-                  <tr>
-                    <td>ライブ</td>
-                    <td>count</td>
-                  </tr>
-                  <tr>
-                    <td>舞台</td>
-                    <td>count</td>
-                  </tr>
-                  <tr>
-                    <td>ミュージカル</td>
-                     <td>count</td>
-                  </tr>
-                </table>
-                <div class="row mt-5 ml-2">
-                  <u>️<%= link_to "いいねした投稿", likes_customer_path(@customer), class: "text-dark" %></u>
-                </div>
+
+
               </div>
               <div class="col-8">
                 <% @customer_posts.each do |post| %>
@@ -90,13 +84,6 @@
               </div>
             </div>
           <% end %>
-
-          <div class="row mt-3">
-            <div class="col-10"></div>
-            <div class="col-2">
-              <%= render 'layouts/back_btn' %>
-            </div>
-          </div>
 
         </div>
       </div>

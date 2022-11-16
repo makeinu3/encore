@@ -12,10 +12,11 @@
               <p>いいねした投稿はありません。</p>
             <% else %>
               <% @like_posts.each do |post| %>
-                <div class="col-3">
-                  <%= link_to post_path(post) do %>
-                    <%= image_tag post.image, width: "100%" %>
-                    <div class="text-dark text-center"><%= post.title %></div>
+                <div class="col-md-3 p-3">
+                  <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
+                  <%= link_to post_path(post), class: "link" do %>
+                    <%= image_tag post.image, class: "image" %><br>
+                    <%= post.title %>
                   <% end %>
                 </div>
               <% end %>
@@ -23,7 +24,6 @@
           </div>
 
           <div class="row mt-5">
-            <div class="col-10"></div>
             <div class="col-2">
               <%= render 'layouts/back_btn' %>
             </div>

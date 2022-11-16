@@ -2,7 +2,7 @@
   <div class="row my-4">
     <div class="col-md-10 p-5">
 
-      <form class="form-inline d-flex justify-content-between">
+      <form class="form-inline mb-3 d-flex justify-content-between">
         <h4>投稿一覧</h4>
         <div align="right">
           <%= search_form_for @search, url: posts_path do |f| %>
@@ -12,25 +12,25 @@
         </div>
       </form>
 
-      <div class="row mt-3">
+      <div class="row">
         <% if @posts.count == 0 %>
           <div class="col-12 text-center">
             <p>当てはまる投稿が見つかりませんでした。</p>
           </div>
         <% end %>
         <% @posts.each do |post| %>
-          <div class="col-3 p-3">
-            <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %>
-            <%= link_to post_path(post) do %>
-              <%= image_tag post.image, width: "100%" %>
-              <div class="text-dark text-center"><%= post.title %></div>
+          <div class="col-md-3 p-3">
+            <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
+            <%= link_to post_path(post), class: "link" do %>
+              <%= image_tag post.image, class: "image" %><br>
+              <div class="p-1"><%= post.title %></div>
             <% end %>
           </div>
         <% end %>
       </div>
 
-      <div class="row mt-3">
-        <div class="col-4 mx-auto">
+      <div class="row mt-5">
+        <div class="col-6 mx-auto">
           <%= paginate @posts %>
         </div>
       </div>

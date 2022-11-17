@@ -1,9 +1,26 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <p>退会しますか？</p>
-      <%= link_to "no", customer_path(@customer), class: "btn btn-outline-success btn-sm" %>
-      <%= link_to "yes", withdraw_customer_path(@customer), method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-outline-danger btn-sm" %>
+  <div class="row my-4">
+    <div class="col-md-8 p-5">
+      <h4 class="mb-3 text-center">退会手続き</h4>
+      <p>
+        <i class="fa-regular fa-hand" aria-hidden="true"></i>
+        退会手続きが完了すると、同じメールアドレスでは再登録ができなくなってしまいます。
+      </p>
+      <p>
+        ご満足いただけるサービスを提供できず申し訳ございません。<br>
+        今後のサービス品質向上のため、退会理由を教えていただけると嬉しいです。
+      </p>
+      <div class="form-group">
+        <%= form_with model: @customer, url: withdraw_customer_path, method: :patch do |f| %>
+          <%= f.label :cancel, "退会理由" %>
+          <%= f.text_area :cancel, class: "form-control" %>
+          <%= f.hidden_field :is_deleted, :value => true %>
+          <%= f.hidden_field :published, :value => false %>
+          <%= f.submit "退会する", data: { confirm: "本当に退会しますか？" }, class: "btn btn-outline-danger btn-sm" %>
+        <% end %>
+      </div>
+
+      <%= link_to "退会しない", customer_path(@customer), class: "btn btn-outline-success btn-sm" %>
     </div>
   </div>
 </div>

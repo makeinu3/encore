@@ -67,12 +67,12 @@
           <% else %>
             <div class="post-list">
               <% @customer_posts.each do |post| %>
-                <div class="row">
+                <div class="row p-2 border-bottom">
                   <div class="col-12">
                     <p>
                       <%= post.show_date.strftime('%y.%m.%d') %>&emsp;<%= post.show_name %><br>
-                      <strong><%= post.title %></strong><br>
-                      <%= safe_join(post.body.split("\n"),tag(:br)) %>
+                      <strong><u><%= link_to post.title, post_path(post), class: "link" %></u></strong><br>
+                      <%= post.body %>
                     </p>
                   </div>
                 </div>

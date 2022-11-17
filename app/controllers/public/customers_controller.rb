@@ -33,7 +33,7 @@ class Public::CustomersController < ApplicationController
   # 退会処理
   def withdraw
     @customer = current_customer
-    @customer.update(is_deleted: true)
+    @customer.update(cancel_params)
     reset_session
     flash[:notice] = "退会手続きが完了しました。"
     redirect_to thanks_path
@@ -44,6 +44,10 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:name, :my_fave, :introduction, :email, :published)
+  end
+
+  def cancel_params
+    params.require(:customer).permit(:is_deleted, :cancel, :published)
   end
 
 end

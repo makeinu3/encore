@@ -21,6 +21,7 @@ class Customer < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :my_fave, length: { maximum: 20 }
   validates :introduction, length: { maximum: 300 }
+  validates :cancel, length: { maximum: 300 }
 
   # 公開/非公開
   scope :publish, -> { where(published: true) }

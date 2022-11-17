@@ -10,7 +10,12 @@
 
         <div class="col-md-8 p-5">
           <form class="form-inline d-flex justify-content-between mb-3">
-            <h4><%= @customer.name %> さま</h4>
+            <h4>
+              <%= @customer.name %> さま
+              <% if @customer.official == true %>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+              <% end %>
+            </h4>
             <div align="right">
               Follow :&emsp;<%= @customer.followings.count %>&emsp;|&emsp;
               Follower :&emsp;<%= @customer.followers.count %>&emsp;|&emsp;
@@ -54,7 +59,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="row mb-3">
             <div class="col-3">退会ステータス</div>
             <div class="col-8 offset-1">
               <% if @customer.is_deleted == false %>
@@ -63,6 +68,11 @@
                 <div class="text-muted"><strong>退会</strong></div>
               <% end %>
             </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-3">退会理由</div>
+            <div class="col-8 offset-1"><%= @customer.cancel %></div>
           </div>
 
           <div class="row mt-5 d-flex justify-content-between">

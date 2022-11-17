@@ -48,7 +48,7 @@
               </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-3">
               <div class="col-3">退会ステータス</div>
               <div class="col-8 offset-1">
                 <%= f.radio_button :is_deleted, false, checked: true %>
@@ -56,6 +56,24 @@
                 &emsp;
                 <%= f.radio_button :is_deleted, true %>
                 <%= f.label :is_deleted, "退会", value: true %>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-3">退会理由</div>
+              <div class="col-8 offset-1">
+                <%= f.text_area :cancel, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-3">公式アカウント</div>
+              <div class="col-8 offset-1">
+                <%= f.radio_button :official, false, checked: true %>
+                <%= f.label :official, "一般", value: false %>
+                &emsp;
+                <%= f.radio_button :official, true %>
+                <%= f.label :official, "公式", value: true %>
               </div>
             </div>
 

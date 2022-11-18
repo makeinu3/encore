@@ -53,8 +53,7 @@ class Public::CustomersController < ApplicationController
 
   # ゲストログイン
   def ensure_guest_user
-    @customer = Customer.find(params[:id])
-    if @customer.name == "guestuser"
+    if current_customer.name == "guestuser"
       redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはこの操作を実行できません。'
     end
   end

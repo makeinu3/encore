@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="row mt-3 my-4">
+  <div class="row my-4">
     <div class="col-md-12">
-      <p class="notice"><%= notice %><%= alert %></p>
+      <p class="notice"><%= notice %></p>
 
       <div class="row">
         <div class="col-md-8 mb-3 p-5">
           <form class="form-inline d-flex justify-content-between">
             <h5>
               <%= @customer.name %>
-              <% if @customer.published == false %>
+              <% if @customer.published == false && @customer.is_deleted == false %>
                 <i class="fas fa-key"></i>
               <% end %>
             </h5>
@@ -66,23 +66,30 @@
 
       <div class="row">
         <div class="col-md-8 p-5">
-          <% if @customer.published == false && @customer != current_customer %>
+          <% if @customer.is_deleted == true %>
+            <p class="text-center">このアカウントは退会済です。</p>
+          <% elsif @customer.published == false && @customer != current_customer %>
             <p class="text-center">このアカウントは非公開アカウントです。</p>
           <% elsif @customer_posts.count == 0 %>
             <p class="text-center">投稿はまだありません。</p>
           <% else %>
             <div class="post-list">
-              <% @customer_posts.each do |post| %>
-                <div class="row p-2 border-bottom">
-                  <div class="col-12">
-                    <p>
-                      <%= post.show_date.strftime('%y.%m.%d') %>&emsp;<%= post.show_name %><br>
-                      <strong><u><%= link_to post.title, post_path(post), class: "link" %></u></strong><br>
-                      <%= post.body %>
-                    </p>
+              <div class="row">
+                <% @customer_posts.each do |post| %>
+                  <div class="col-md-4 mb-3">
+                    <div class="card text-white">
+                      <%= image_tag post.image %>
+                      <div class="card-img-overlay">
+                        <h5 class="card-title"><strong><u><%= link_to post.title, post_path(post), class: "text-light" %></u></strong></h5>
+                        <p class="card-text">
+                          <%= post.show_date.strftime('%y.%m.%d') %><br>
+                          <%= post.show_name %>
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
           <% end %>
 

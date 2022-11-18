@@ -29,7 +29,7 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    flash[:notice] = "いってらっしゃいませ！"
+    flash[:notice] = "お気をつけて、いってらっしゃいませ。"
     thanks_path
   end
 

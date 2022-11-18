@@ -13,7 +13,7 @@
             <h4>投稿一覧</h4>
             <div align="right">
               <%= search_form_for @search, url: admin_posts_path do |f| %>
-                <%= f.search_field :title_or_place_or_show_name_cont, placeholder: "公演名など", class: "form-control form-control-sm" %>
+                <%= f.search_field :title_or_place_or_show_name_or_show_date_or_genre_name_or_customer_name_or_customer_my_fave_cont, placeholder: "公演名など", class: "form-control form-control-sm" %>
                 <%= f.submit "search", class: "btn btn-outline-info btn-sm" %>
               <% end %>
             </div>
@@ -21,10 +21,11 @@
 
           <div class="row">
             <% @all_posts.each do |post| %>
-              <div class="col-md-3 text-center">
+              <div class="col-md-3">
+                <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
                 <%= link_to admin_post_path(post), class: "link" do %>
                   <%= image_tag post.image, class: "image" %><br>
-                  <%= post.title %>
+                  <div class="p-1"><%= post.title %></div>
                 <% end %>
               </div>
             <% end %>

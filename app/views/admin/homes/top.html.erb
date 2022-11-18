@@ -25,10 +25,11 @@
           <h4 class="mb-3">新着投稿</h4>
           <div class="row mb-3">
             <% @new_posts.each do |post| %>
-              <div class="col-md-3 p-3 text-center">
+              <div class="col-md-3 p-3">
+                <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
                 <%= link_to admin_post_path(post), class: "link" do %>
                   <%= image_tag post.image, class: "image" %><br>
-                  <%= post.title %>
+                  <div class="p-1"><%= post.title %></div>
                 <% end %>
               </div>
             <% end %>

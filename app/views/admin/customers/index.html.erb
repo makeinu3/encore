@@ -32,7 +32,12 @@
               <% @all_customers.each do |customer| %>
                 <tr>
                   <td align="center"><%= customer.id %></td>
-                  <td><u><%= link_to customer.name, admin_customer_path(customer), class: "link" %></u></td>
+                  <td>
+                    <u><%= link_to customer.name, admin_customer_path(customer), class: "link" %></u>
+                    <% if customer.official == true %>
+                      <i class="fa-regular fa-circle-check" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
                   <td><%= customer.my_fave %></td>
                   <td align="center"><%= customer.posts.count %></td>
                   <td align="center">

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top', as: 'top'
-    post '/guests/guest_sign_in', to: 'guests#new_guest'
+    post '/guests/guest_sign_in' => 'guests#admin_guest', as: 'guestadmin'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
 
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get '/welcome' => 'homes#welcome', as: 'welcome'  # ログイン前のページ
     get '/about' => 'homes#about', as: 'about'
     get '/thanks' => 'homes#thanks', as: 'thanks'     # ログアウト後のページ
-    post '/guests/guest_sign_in', to: 'guests#new_guest'
+    post '/guests/guest_sign_in' => 'guests#new_guest', as: 'guestuser'
 
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'  # 退会確認画面
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'        # 退会処理

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+
+  before_action :customer_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -22,23 +24,26 @@ class Public::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_in_path_for(resource)
+    flash[:notice] = "おかえりなさい！"
     root_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "いってらっしゃいませ！"
     thanks_path
   end
 
   # 退会ステータスを確認
   def customer_state
-    ## 【処理内容1】 入力されたemailからアカウントを1件取得
+    # 入力されたemailからアカウントを1件取得
     @customer = Customer.find_by(email: params[:customer][:email])
-    ## アカウントを取得できなかった場合、このメソッドを終了する
+    # アカウントを取得できなかった場合、このメソッドを終了する
     return if !@customer
-    ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)
-      ## 【処理内容3】
-      redirect_to new_customer_registration
+    # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別 && 退会ステータスがtrue
+    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+      # 退会済カスタマーはサインアップ画面へ
+      flash[:notice] = "このメールアドレスはご利用できません。"
+      redirect_to new_customer_registration_path
     end
   end
 

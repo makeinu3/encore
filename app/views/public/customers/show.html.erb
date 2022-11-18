@@ -27,7 +27,7 @@
               ️<%= link_to "likes", likes_customer_path(@customer), class: "link" %>
             </div>
             <div class="col-2">
-              <% if @customer == current_customer %>
+              <% if @customer == current_customer && @customer.name != "guestuser" %>
                 <%= link_to "編集", edit_customer_path(current_customer), class: "btn btn-outline-success btn-sm btn-block" %>
                 <%= link_to "退会", confirm_unsubscribe_path, class: "btn btn-outline-danger btn-sm btn-block" %>
               <% else %>
@@ -46,7 +46,11 @@
             <div class="col-8">
               <div class="box p-4">
                 <p>me</p>
-                <p><%= safe_join(@customer.introduction.split("\n"),tag(:br)) %></p>
+                <p>
+                  <% if @customer.introduction.present? %>
+                    <%= safe_join(@customer.introduction.split("\n"),tag(:br)) %>
+                  <% end %>
+                </p>
               </div>
             </div>
           </div>
@@ -64,6 +68,8 @@
         <div class="col-md-8 p-5">
           <% if @customer.published == false && @customer != current_customer %>
             <p class="text-center">このアカウントは非公開アカウントです。</p>
+          <% elsif @customer_posts.count == 0 %>
+            <p class="text-center">投稿はまだありません。</p>
           <% else %>
             <div class="post-list">
               <% @customer_posts.each do |post| %>

@@ -2,6 +2,7 @@ class Public::CustomersController < ApplicationController
 
   before_action :redirect_welcome
   before_action :set_customer, only: [:show, :edit, :update, :likes]  # Customer.find(params[:id])
+  before_action :ensure_guest_user, except: [:show, :likes]
 
   def show
     @customer_posts = Post.where(customer_id: @customer).order("show_date DESC")
@@ -48,6 +49,14 @@ class Public::CustomersController < ApplicationController
 
   def cancel_params
     params.require(:customer).permit(:is_deleted, :cancel, :published)
+  end
+
+  # ゲストログイン
+  def ensure_guest_user
+    @customer = Customer.find(params[:id])
+    if @customer.name == "guestuser"
+      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはこの操作を実行できません。'
+    end
   end
 
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top', as: 'top'
+    post '/guests/guest_sign_in', to: 'guests#new_guest'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
 
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   # 顧客
-  devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :customers, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     get '/welcome' => 'homes#welcome', as: 'welcome'  # ログイン前のページ
     get '/about' => 'homes#about', as: 'about'
     get '/thanks' => 'homes#thanks', as: 'thanks'     # ログアウト後のページ
+    post '/guests/guest_sign_in', to: 'guests#new_guest'
 
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'  # 退会確認画面
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'        # 退会処理

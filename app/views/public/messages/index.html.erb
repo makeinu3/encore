@@ -6,7 +6,22 @@
       <div class="row">
         <div class="col-md-8 p-5">
           <h4 class="text-center">Thanks</h4>
-
+          <div class="row">
+            <% @likes_rank.each do |post| %>
+              <div class="col-md-4">
+                <div class="card text-white">
+                  <%= image_tag post.image %>
+                  <div class="card-img-overlay">
+                    <div class="card-title"><u><%= link_to post.place, post_path(post), class: "text-light" %></u></div>
+                    <p class="card-text">
+                      <%= post.show_date.strftime('%y.%m.%d') %><br>
+                      <%= post.show_name %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
 

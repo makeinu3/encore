@@ -5,7 +5,7 @@ class Admin::MessagesController < ApplicationController
   before_action :set_message, except: [:index]  # Message.find(params[:id])
 
   def index
-    @messages = Message.all.page(params[:page]).per(10)
+    @messages = Message.all.includes(:customer).page(params[:page]).per(10)
     @message = Message.new
   end
 

@@ -23,17 +23,14 @@
 
 header {
   width: 100%;
-  padding: 30px 0;
   text-align: center;
   background-color: #abced8;
   color: #ab6953;
 }
 
-main {
-  background-color: #f8f4e6;
-  background-size: auto auto;
-  background-image: repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(233, 84, 100, 0.1) 31px, rgba(233, 84, 100, 0.1) 32px ),
-                    repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(233, 84, 100, 0.1) 31px, rgba(233, 84, 100, 0.1) 32px );
+body {
+  background-image: url(https://cdn.pixabay.com/photo/2017/07/10/21/26/damask-digital-2491639_1280.jpg);
+  background-size: cover;
 }
 
 .col-md-8, .col-md-10 {
@@ -48,7 +45,7 @@ footer {
   padding: 30px 0;
   margin-top:  auto;
   text-align: center;
-  background-color: #abced8;
+  background-color: #6f4b3e;
   color: #ab6953;
 }
 

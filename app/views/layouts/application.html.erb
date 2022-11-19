@@ -2,41 +2,59 @@
 <html>
   <head>
     <title>encore</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="d-flex flex-column vh-100">
     <header>
-      <% if admin_signed_in? %>
-        <%= link_to admin_top_path do %>
-          <h1>encore</h1>
-        <% end %>
-        <div class="text-right">
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      <nav class="navbar navbar-expand-md">
+        <div class="container">
+          <% if admin_signed_in? %>
+            <%= link_to admin_top_path do %>
+              <div class="navbar-brand p-3"><h1>encore</h1></div>
+            <% end %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "text-right" %>
+          <% else %>
+            <%= link_to root_path do %>
+              <div class="navbar-brand p-3"><h1>encore</h1></div>
+            <% end %>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"><i class="fa-solid fa-caret-down"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <% if customer_signed_in? %>
+                  <li class="nav-item">
+                    <%= link_to "マイページ", customer_path(current_customer) %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "投稿する", new_post_path %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"} %>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to "welcome", welcome_path %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "about", about_path %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログイン", new_customer_session_path %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+
+          <% end %>
         </div>
-      <% else %>
-        <%= link_to root_path do %>
-          <h1>encore</h1>
-        <% end %>
-        <% if customer_signed_in? %>
-          <div class="text-right">
-            <%= link_to "post", new_post_path %>
-            <%= link_to "マイページ", customer_path(current_customer) %>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-          </div>
-        <% else %>
-          <div class="text-right">
-            <%= link_to "welcome", welcome_path %>
-            <%= link_to "about", about_path %>
-            <%= link_to "ログイン", new_customer_session_path %>
-          </div>
-        <% end %>
-      <% end %>
+      </nav>
 
     </header>
 

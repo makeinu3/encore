@@ -1,5 +1,6 @@
 class Admin::HomesController < ApplicationController
 
+  before_action :authenticate_admin!
   before_action :set_sidebar  # @customers, @posts, @messages
 
   def top

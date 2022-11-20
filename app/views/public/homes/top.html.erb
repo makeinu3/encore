@@ -11,7 +11,7 @@
             <div class="row">
               <% @posts.each do |post| %>
                 <div class="col-md-4 mx-auto mt-2 border-bottom">
-                  <i class="far fa-flag"></i> <%= post.genre.name %><br>
+                  <i class="far fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
                   <%= link_to post_path(post), class: "link" do %>
                     <%= image_tag post.image, class: "image" %><br>
                     <div class="p-1"><%= post.title %></div>
@@ -23,7 +23,7 @@
             <div class="row mt-3">
               <div class="col-12 text-right">
                 <%= link_to posts_path, class: "text-dark" do %>
-                  すべての投稿を見る&emsp;<i class="fa-solid fa-forward" aria-hidden="true"></i>
+                  すべての投稿を見る&emsp;<i class="fas fa-forward" aria-hidden="true"></i>
                 <% end %>
               </div>
             </div>

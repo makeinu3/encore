@@ -8,8 +8,10 @@
           <form class="form-inline d-flex justify-content-between">
             <h5>
               <%= @customer.name %>
-              <% if @customer.published == false && @customer.is_deleted == false %>
-                <i class="fas fa-key"></i>
+              <% if @customer.official == true %>
+                <i class="far fa-check-circle" aria-hidden="true"></i>
+              <% elsif @customer.published == false && @customer.is_deleted == false %>
+                <i class="fas fa-key" aria-hidden="true"></i>
               <% end %>
             </h5>
             <div class="col-5">
@@ -24,7 +26,9 @@
               <% end %>
             </div>
             <div class="col-2">
-              ️<%= link_to "likes", likes_customer_path(@customer), class: "link" %>
+              ️<%= link_to likes_customer_path(@customer), class: "link" do %>
+                <i class="far fa-bookmark" aria-hidden="true"></i> likes
+              <% end %>
             </div>
             <div class="col-2">
               <% if @customer == current_customer && @customer.name != "guestuser" %>
@@ -40,7 +44,11 @@
             <div class="col-4">
               <div class="box p-4">
                 <p>favorite</p>
-                <p><%= @customer.my_fave %></p>
+                <p>
+                  <% if @customer.my_fave.present? %>
+                    <%= @customer.my_fave %>
+                  <% end %>
+                </p>
               </div>
             </div>
             <div class="col-8">
@@ -76,7 +84,7 @@
             <div class="post-list">
               <div class="row">
                 <% @customer_posts.each do |post| %>
-                  <div class="col-md-4 mb-3">
+                  <div class="col-4 mb-3">
                     <div class="card text-white">
                       <%= image_tag post.image %>
                       <div class="card-img-overlay">

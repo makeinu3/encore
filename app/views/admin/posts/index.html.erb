@@ -22,7 +22,7 @@
           <div class="row">
             <% @all_posts.each do |post| %>
               <div class="col-md-3">
-                <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
+                <i class="far fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
                 <%= link_to admin_post_path(post), class: "link" do %>
                   <%= image_tag post.image, class: "image" %><br>
                   <div class="p-1"><%= post.title %></div>

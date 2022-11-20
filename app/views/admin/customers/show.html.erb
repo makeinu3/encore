@@ -13,7 +13,7 @@
             <h4>
               <%= @customer.name %> さま
               <% if @customer.official == true %>
-                <i class="fa-regular fa-circle-check" aria-hidden="true"></i>
+                <i class="far fa-check-circle" aria-hidden="true"></i>
               <% end %>
             </h4>
             <div align="right">
@@ -40,12 +40,24 @@
 
           <div class="row mb-3">
             <div class="col-3">自己紹介</div>
-            <div class="col-8 offset-1"><%= safe_join(@customer.introduction.split("\n"),tag(:br)) %></div>
+            <div class="col-8 offset-1">
+              <% if @customer.introduction.present? %>
+                <%= safe_join(@customer.introduction.split("\n"),tag(:br)) %>
+              <% else %>
+                <div class="text-muted">未入力</div>
+              <% end %>
+            </div>
           </div>
 
           <div class="row mb-3">
             <div class="col-3">好きなひと</div>
-            <div class="col-8 offset-1"><%= @customer.my_fave %></div>
+            <div class="col-8 offset-1">
+              <% if @customer.my_fave.present? %>
+                <%= @customer.my_fave %>
+              <% else %>
+                <div class="text-muted">未入力</div>
+              <% end %>
+            </div>
           </div>
 
           <div class="row mb-3">

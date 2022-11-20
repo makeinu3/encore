@@ -2,8 +2,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
   def change
     create_table :posts do |t|
 
-      t.references :customer, foreign_key: true, null: false
-      t.references :genre, foreign_key: true, null: false
+      t.references :customer, type: :bigint, foreign_key: true, null: false
+      t.references :genre, type: :bigint, foreign_key: true, null: false
       t.string :title, null: false
       t.string :body, null: false
       t.string :place, null: false      # 公演会場

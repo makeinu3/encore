@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2022_11_17_034441) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "customer_id", null: false
+    t.bigint "post_id", null: false
     t.string "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 2022_11_17_034441) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "customer_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_likes_on_customer_id"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_034441) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "customer_id", null: false
+    t.bigint "customer_id", null: false
     t.string "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 2022_11_17_034441) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "genre_id", null: false
+    t.bigint "customer_id", null: false
+    t.bigint "genre_id", null: false
     t.string "title", null: false
     t.string "body", null: false
     t.string "place", null: false

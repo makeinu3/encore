@@ -11,7 +11,7 @@
             <div class="row">
               <% @posts.each do |post| %>
                 <div class="col-md-4 mx-auto mt-2 border-bottom">
-                  <i class="fa-regular fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
+                  <i class="far fa-flag"></i> <%= post.genre.name %><br>
                   <%= link_to post_path(post), class: "link" do %>
                     <%= image_tag post.image, class: "image" %><br>
                     <div class="p-1"><%= post.title %></div>

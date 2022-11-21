@@ -88,15 +88,7 @@
             <ul class="list-unstyled">
               <li><%= link_to "トップページ", root_path, class: "footer-link" %></li>
               <li><%= link_to "初めてのお客様へ", about_path, class: "footer-link" %></li>
-              <li><%= link_to "サインアップ", welcome_path, class: "footer-link" %></li>
-            </ul>
-          </div>
-
-          <div class="col-md-2">
-            <h6>会員</h6>
-            <ul class="list-unstyled">
-              <li><%= link_to "マイページ", customer_path(current_customer), class: "footer-link" %></li>
-              <li><%= link_to "ログイン", new_customer_session_path, class: "footer-link" %></li>
+              <li><%= link_to "ログイン", welcome_path, class: "footer-link" %></li>
               <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "footer-link" %></li>
             </ul>
           </div>

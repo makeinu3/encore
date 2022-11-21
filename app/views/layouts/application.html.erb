@@ -88,8 +88,11 @@
             <ul class="list-unstyled">
               <li><%= link_to "トップページ", root_path, class: "footer-link" %></li>
               <li><%= link_to "初めてのお客様へ", about_path, class: "footer-link" %></li>
-              <li><%= link_to "ログイン", welcome_path, class: "footer-link" %></li>
-              <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "footer-link" %></li>
+              <% if customer_signed_in? %>
+                <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "footer-link" %></li>
+              <% else %>
+                <li><%= link_to "ログイン", welcome_path, class: "footer-link" %></li>
+              <% end %>
             </ul>
           </div>
 
@@ -97,16 +100,20 @@
             <h6>投稿</h6>
             <ul class="list-unstyled">
               <li><%= link_to "投稿一覧", posts_path, class: "footer-link" %></li>
-              <li><%= link_to "新規投稿", new_post_path, class: "footer-link" %></li>
+              <% if customer_signed_in? %>
+                <li><%= link_to "新規投稿", new_post_path, class: "footer-link" %></li>
+              <% end %>
             </ul>
           </div>
 
-          <div class="col-md-2">
-            <h6>その他</h6>
-            <ul class="list-unstyled">
-              <li><%= link_to "お客様ノート", messages_path, class: "footer-link" %></li>
-            </ul>
-          </div>
+          <% if customer_signed_in? %>
+            <div class="col-md-2">
+              <h6>その他</h6>
+              <ul class="list-unstyled">
+                <li><%= link_to "お客様ノート", messages_path, class: "footer-link" %></li>
+              </ul>
+            </div>
+          <% end %>
 
         </div>
       </div>

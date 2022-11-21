@@ -22,20 +22,24 @@
 }
 
 .body {
-  background-color: #00552e;
+  background-color: #316745;
   background-size: cover;
 }
 
 header {
   width: 100%;
   text-align: center;
-  color: #ab6953;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
 }
 
 .col-md-8, .col-md-10 {
   height: 100%;
   margin: 0 auto;
-  background-color: #fbfaf5;
+  background-color: #f8f4e6;
   border-radius: 50px;
 }
 
@@ -43,14 +47,21 @@ footer {
   width: 100%;
   padding: 30px 0;
   margin-top:  auto;
-  text-align: center;
-  color: #ab6953;
+  color: #f8f4e6;
+}
+
+li {
+  text-indent: 1em;
 }
 
 /* リンク */
 .link {
   text-decoration: none;
   color: #343a40;
+}
+
+.footer-link {
+  color: #f8f4e6;
 }
 
 /* aboutのまる */

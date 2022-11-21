@@ -12,56 +12,62 @@
 
   <body class="body d-flex flex-column vh-100">
     <header class="d-flex justify-content-between">
-      <%= image_tag 'header.PNG', width: "10%" %>
+      <%= image_tag 'header.PNG', width: "15%" %>
       <% if admin_signed_in? %>
         <%= link_to admin_top_path do %>
           <%= image_tag 'logo.PNG', width: "30%" %>
         <% end %>
-        <div class="dropdown col-2">
-          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            営業中
+        <div class="dropdown">
+          <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            &emsp;営業中&emsp;
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <div class="dropdown-item">
-              <%= link_to "お客様ノート", admin_messages_path %>
+              <%= link_to "お客様ノート", admin_messages_path, class: "link" %>
             </div>
             <div class="dropdown-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data: { confirm: "ログアウトしますか？"} %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "link" %>
             </div>
           </div>
         </div>
       <% else %>
         <%= link_to root_path do %>
-          <%= image_tag 'logo.PNG', width: "30%", class: "col-5" %>
+          <%= image_tag 'logo.PNG', width: "50%" %>
         <% end %>
         <% if customer_signed_in? %>
           <div class="dropdown col-2">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              営業中
+            <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              &emsp;営業中&emsp;
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <div class="dropdown-item">
-                <%= link_to "マイページ", customer_path(current_customer) %>
+                <%= link_to "マイページ", customer_path(current_customer), class: "link" %>
               </div>
               <div class="dropdown-item">
-                <%= link_to "投稿する", new_post_path %>
+                <%= link_to "投稿する", new_post_path, class: "link" %>
               </div>
               <div class="dropdown-item">
-                <%= link_to "お客様ノート", messages_path %>
+                <%= link_to "お客様ノート", messages_path, class: "link" %>
               </div>
               <div class="dropdown-item">
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"} %>
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "link" %>
               </div>
             </div>
           </div>
         <% else %>
           <div class="dropdown col-2">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              準備中
+            <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              &emsp;準備中&emsp;
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <div class="dropdown-item">
-                <%= link_to "初めてのお客様へ", about_path %>
+                <%= link_to "初めてのお客様へ", about_path, class: "link" %>
+              </div>
+              <div class="dropdown-item">
+                <%= link_to "新規登録", new_customer_registration_path, class: "link" %>
+              </div>
+              <div class="dropdown-item">
+                <%= link_to "ログイン", new_customer_session_path, class: "link" %>
               </div>
             </div>
           </div>
@@ -75,15 +81,43 @@
     </main>
 
     <footer>
-      <p>No Live, No Life</p>
-      <% unless admin_signed_in? %>
-        <% if customer_signed_in? %>
-          <div class="text-right">
-            <%= link_to "about", about_path %>
-
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <h6>ホーム</h6>
+            <ul class="list-unstyled">
+              <li><%= link_to "トップページ", root_path, class: "footer-link" %></li>
+              <li><%= link_to "初めてのお客様へ", about_path, class: "footer-link" %></li>
+              <li><%= link_to "サインアップ", welcome_path, class: "footer-link" %></li>
+            </ul>
           </div>
-        <% end %>
-      <% end %>
+
+          <div class="col-md-2">
+            <h6>会員</h6>
+            <ul class="list-unstyled">
+              <li><%= link_to "マイページ", customer_path(current_customer), class: "footer-link" %></li>
+              <li><%= link_to "ログイン", new_customer_session_path, class: "footer-link" %></li>
+              <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "footer-link" %></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+            <h6>投稿</h6>
+            <ul class="list-unstyled">
+              <li><%= link_to "投稿一覧", posts_path, class: "footer-link" %></li>
+              <li><%= link_to "新規投稿", new_post_path, class: "footer-link" %></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+            <h6>その他</h6>
+            <ul class="list-unstyled">
+              <li><%= link_to "お客様ノート", messages_path, class: "footer-link" %></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
     </footer>
   </body>
 </html>

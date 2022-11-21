@@ -11,7 +11,7 @@
     <% if message.customer == current_customer %>
       <div class="col-1">
         <%= link_to message_path(message), method: :delete, remote: true, data: { confirm: "本当に削除しますか？"}, class: "text-dark" do %>
-          <i class="fa-solid fa-delete-left" aria-hidden="true"></i>
+          <i class="fas fa-backspace" aria-hidden="true"></i>
         <% end %>
       </div>
     <% end %>

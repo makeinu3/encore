@@ -54,13 +54,16 @@ li {
   text-indent: 1em;
 }
 
+.notice {
+  color: #f8f4e6;
+}
+
 /* リンク */
-.link {
-  text-decoration: none;
+.link, .link:hover {
   color: #343a40;
 }
 
-.footer-link {
+.footer-link, .footer-link:hover {
   color: #f8f4e6;
 }
 
@@ -98,4 +101,5 @@ li {
   width: 150px;
   height: 130px;
   object-fit: cover;
+  pointer-events: none;
 }

@@ -11,7 +11,7 @@
 
             <div class="row mt-3">
               <div class="col-3">
-                <%= f.label :name, "おなまえ" %>
+                <%= f.label :name, "お名前" %>
               </div>
               <div class="col-8 offset-1">
                 <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
@@ -59,7 +59,9 @@
             </div>
 
             <div class="row mt-3">
-              <div class="col-3"></div>
+              <div class="col-3">
+                <%= render 'layouts/back_btn' %>
+              </div>
               <div class="col-2 offset-1">
                 <%= f.submit "保存", class: "btn btn-outline-success btn-sm btn-block" %>
               </div>

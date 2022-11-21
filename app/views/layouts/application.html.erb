@@ -10,52 +10,63 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
-    <header>
-      <nav class="navbar navbar-expand-md">
-        <div class="container">
-          <% if admin_signed_in? %>
-            <%= link_to admin_top_path do %>
-              <div class="navbar-brand p-3"><h1>encore</h1></div>
-            <% end %>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "text-right" %>
-          <% else %>
-            <%= link_to root_path do %>
-              <div class="navbar-brand p-3"><h1>encore</h1></div>
-            <% end %>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"><i class="fa-solid fa-caret-down"></i></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-auto">
-                <% if customer_signed_in? %>
-                  <li class="nav-item">
-                    <%= link_to "マイページ", customer_path(current_customer) %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "投稿する", new_post_path %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"} %>
-                  </li>
-                <% else %>
-                  <li class="nav-item">
-                    <%= link_to "welcome", welcome_path %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "about", about_path %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "ログイン", new_customer_session_path %>
-                  </li>
-                <% end %>
-              </ul>
+  <body class="body d-flex flex-column vh-100">
+    <header class="d-flex justify-content-between">
+      <%= image_tag 'header.PNG', width: "10%" %>
+      <% if admin_signed_in? %>
+        <%= link_to admin_top_path do %>
+          <%= image_tag 'logo.PNG', width: "30%" %>
+        <% end %>
+        <div class="dropdown col-2">
+          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            営業中
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-item">
+              <%= link_to "お客様ノート", admin_messages_path %>
             </div>
-
-          <% end %>
+            <div class="dropdown-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data: { confirm: "ログアウトしますか？"} %>
+            </div>
+          </div>
         </div>
-      </nav>
+      <% else %>
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.PNG', width: "30%", class: "col-5" %>
+        <% end %>
+        <% if customer_signed_in? %>
+          <div class="dropdown col-2">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              営業中
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-item">
+                <%= link_to "マイページ", customer_path(current_customer) %>
+              </div>
+              <div class="dropdown-item">
+                <%= link_to "投稿する", new_post_path %>
+              </div>
+              <div class="dropdown-item">
+                <%= link_to "お客様ノート", messages_path %>
+              </div>
+              <div class="dropdown-item">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"} %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="dropdown col-2">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              準備中
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-item">
+                <%= link_to "初めてのお客様へ", about_path %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
 
     </header>
 
@@ -69,7 +80,7 @@
         <% if customer_signed_in? %>
           <div class="text-right">
             <%= link_to "about", about_path %>
-            <%= link_to "お客様ノート", messages_path %>
+
           </div>
         <% end %>
       <% end %>

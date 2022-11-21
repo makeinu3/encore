@@ -21,16 +21,15 @@
   font-family: 'Comic Sans MS', 'arial unicode ms', sans-serif;
 }
 
+.body {
+  background-color: #00552e;
+  background-size: cover;
+}
+
 header {
   width: 100%;
   text-align: center;
-  background-color: #abced8;
   color: #ab6953;
-}
-
-body {
-  background-image: url(https://cdn.pixabay.com/photo/2017/07/10/21/26/damask-digital-2491639_1280.jpg);
-  background-size: cover;
 }
 
 .col-md-8, .col-md-10 {
@@ -45,7 +44,6 @@ footer {
   padding: 30px 0;
   margin-top:  auto;
   text-align: center;
-  background-color: #6f4b3e;
   color: #ab6953;
 }
 

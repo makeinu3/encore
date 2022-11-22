@@ -41,26 +41,21 @@
           </form>
 
           <div class="row mt-3">
-            <div class="col-4">
-              <div class="box p-4">
-                <p>favorite</p>
+            <% if @customer.my_fave.present? %>
+              <div class="col-12 mb-3 border-bottom">
                 <p>
-                  <% if @customer.my_fave.present? %>
-                    <%= @customer.my_fave %>
-                  <% end %>
+                  スキ&emsp;&emsp;
+                  <%= @customer.my_fave %>
                 </p>
               </div>
-            </div>
-            <div class="col-8">
-              <div class="box p-4">
-                <p>me</p>
+            <% end %>
+            <% if @customer.introduction.present? %>
+              <div class="col-12 mb-3 border-bottom">
                 <p>
-                  <% if @customer.introduction.present? %>
-                    <%= safe_join(@customer.introduction.split("\n"),tag(:br)) %>
-                  <% end %>
+                  <%= safe_join(@customer.introduction.split("\n"),tag(:br)) %>
                 </p>
               </div>
-            </div>
+            <% end %>
           </div>
 
           <div class="row mt-3">

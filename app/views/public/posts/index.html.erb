@@ -19,7 +19,7 @@
           </div>
         <% end %>
         <% @posts.each do |post| %>
-          <div class="col-md-3 p-3">
+          <div class="col-md-4 p-3">
             <i class="far fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
             <%= link_to post_path(post), class: "link" do %>
               <%= image_tag post.image, class: "image" %><br>

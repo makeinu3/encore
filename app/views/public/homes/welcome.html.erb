@@ -1,18 +1,33 @@
 <div class="container">
   <div class="row my-4">
-    <div class="col-md-10 p-5 text-center">
-      <h3 class="mb-5">いらっしゃいませ</h3>
+    <div class="col-md-12">
+      <p class="notice"><%= notice %></p>
 
-      <div class="row text-center">
-        <div class="col-md-3 mx-auto p-1">
-          <%= link_to 'ゲストログイン(閲覧用)', guestuser_path, method: :post, class: "btn btn-outline-dark btn-block" %>
+      <div class="col-md-10 p-5 text-center">
+        <h3 class="mb-3">いらっしゃいませ</h3>
+        <p>
+          投稿内容の閲覧や、投稿、コメント等はログインが必要になります。<br>
+          下記 3 つの方法からお選びいただけます。
+        </p>
+
+        <div class="row mt-5 text-center">
+          <div class="col-md-4 mx-auto p-1">
+            新規登録は、<br><br>
+            <%= link_to "サインアップ", new_customer_registration_path, class: "link" %><br>
+            <%= image_tag 'line.PNG', width: "100%" %>
+          </div>
+          <div class="col-md-4 mx-auto p-1">
+            会員の方は、<br><br>
+            <%= link_to "ログイン", new_customer_session_path, class: "link" %><br>
+            <%= image_tag 'line.PNG', width: "100%" %>
+          </div>
+          <div class="col-md-4 mx-auto p-1">
+            お試ししたい方は、<br><br>
+            <%= link_to 'ゲストログイン(閲覧)', guestuser_path, method: :post, class: "link" %><br>
+            <%= image_tag 'line.PNG', width: "100%" %>
+          </div>
         </div>
-        <div class="col-md-3 mx-auto p-1">
-          <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-info btn-block" %>
-        </div>
-        <div class="col-md-3 mx-auto p-1">
-          <%= link_to "サインアップ", new_customer_registration_path, class: "btn btn-outline-success btn-block" %>
-        </div>
+
       </div>
 
     </div>

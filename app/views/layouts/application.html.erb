@@ -15,18 +15,15 @@
       <%= image_tag 'header.PNG', width: "15%" %>
       <% if admin_signed_in? %>
         <%= link_to admin_top_path do %>
-          <%= image_tag 'logo.PNG', width: "30%" %>
+          <%= image_tag 'logo.PNG', width: "50%" %>
         <% end %>
-        <div class="dropdown">
+        <div class="dropdown col-2">
           <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             &emsp;営業中&emsp;
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <div class="dropdown-item">
-              <%= link_to "お客様ノート", admin_messages_path, class: "link" %>
-            </div>
-            <div class="dropdown-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "link" %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "link" %>
             </div>
           </div>
         </div>
@@ -50,7 +47,7 @@
                 <%= link_to "お客様ノート", messages_path, class: "link" %>
               </div>
               <div class="dropdown-item">
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "link" %>
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "link" %>
               </div>
             </div>
           </div>
@@ -82,16 +79,19 @@
 
     <footer>
       <div class="container">
+        <% if admin_signed_in? %>
+          <p>カスタマー側のリンクになります。</p>
+        <% end %>
         <div class="row">
           <div class="col-md-2">
             <h6>ホーム</h6>
             <ul class="list-unstyled">
-              <li><%= link_to "トップページ", root_path, class: "footer-link" %></li>
-              <li><%= link_to "初めてのお客様へ", about_path, class: "footer-link" %></li>
+              <li class="footer-list"><%= link_to "トップページ", root_path, class: "footer-link" %></li>
+              <li class="footer-list"><%= link_to "初めてのお客様へ", about_path, class: "footer-link" %></li>
               <% if customer_signed_in? %>
-                <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？"}, class: "footer-link" %></li>
+                <li class="footer-list"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "footer-link" %></li>
               <% else %>
-                <li><%= link_to "ログイン", welcome_path, class: "footer-link" %></li>
+                <li class="footer-list"><%= link_to "ログイン", welcome_path, class: "footer-link" %></li>
               <% end %>
             </ul>
           </div>
@@ -99,9 +99,9 @@
           <div class="col-md-2">
             <h6>投稿</h6>
             <ul class="list-unstyled">
-              <li><%= link_to "投稿一覧", posts_path, class: "footer-link" %></li>
+              <li class="footer-list"><%= link_to "投稿一覧", posts_path, class: "footer-link" %></li>
               <% if customer_signed_in? %>
-                <li><%= link_to "新規投稿", new_post_path, class: "footer-link" %></li>
+                <li class="footer-list"><%= link_to "新規投稿", new_post_path, class: "footer-link" %></li>
               <% end %>
             </ul>
           </div>
@@ -110,7 +110,7 @@
             <div class="col-md-2">
               <h6>その他</h6>
               <ul class="list-unstyled">
-                <li><%= link_to "お客様ノート", messages_path, class: "footer-link" %></li>
+                <li class="footer-list"><%= link_to "お客様ノート", messages_path, class: "footer-link" %></li>
               </ul>
             </div>
           <% end %>

@@ -4,8 +4,8 @@ class Admin::HomesController < ApplicationController
   before_action :set_sidebar  # @customers, @posts, @messages
 
   def top
-    @new_customers = Customer.limit(3).order("created_at DESC")
-    @new_posts = Post.limit(4).order("created_at DESC")
+    @new_customers = Customer.limit(3).order(created_at: "DESC")
+    @new_posts = Post.limit(4).order(created_at: "DESC")
   end
 
 end

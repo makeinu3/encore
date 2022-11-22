@@ -4,7 +4,7 @@ class Public::HomesController < ApplicationController
   end
 
   def top
-    @posts = Post.publish_posts.includes(:customer).limit(6).order("created_at DESC")
+    @posts = Post.publish_posts.includes(:customer).limit(6).order(created_at: "DESC")
   end
 
   def about

@@ -25,7 +25,7 @@ class Public::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     flash[:notice] = "おかえりなさいませ。"
-    root_path
+    customer_path(resource)
   end
 
   def after_sign_out_path_for(resource)

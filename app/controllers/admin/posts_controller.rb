@@ -6,7 +6,7 @@ class Admin::PostsController < ApplicationController
 
   def index
     @search = Post.includes(:customer).ransack(params[:q])                           # 検索
-    @all_posts = @search.result.page(params[:page]).per(8).order("created_at DESC")  # 検索結果
+    @all_posts = @search.result.page(params[:page]).per(6).order("created_at DESC")  # 検索結果
   end
 
   def show

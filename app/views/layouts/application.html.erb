@@ -83,7 +83,7 @@
           <p>カスタマー側のリンクになります。</p>
         <% end %>
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-lg-2 col-md-4">
             <h6>ホーム</h6>
             <ul class="list-unstyled">
               <li class="footer-list"><%= link_to "トップページ", root_path, class: "footer-link" %></li>
@@ -96,7 +96,7 @@
             </ul>
           </div>
 
-          <div class="col-md-2">
+          <div class="col-lg-2 col-md-4">
             <h6>投稿</h6>
             <ul class="list-unstyled">
               <li class="footer-list"><%= link_to "投稿一覧", posts_path, class: "footer-link" %></li>
@@ -107,7 +107,7 @@
           </div>
 
           <% if customer_signed_in? %>
-            <div class="col-md-2">
+            <div class="col-lg-2 col-md-4">
               <h6>その他</h6>
               <ul class="list-unstyled">
                 <li class="footer-list"><%= link_to "お客様ノート", messages_path, class: "footer-link" %></li>

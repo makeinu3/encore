@@ -7,48 +7,50 @@
         <div class="col-md-8 p-5">
           <h4>サインアップ</h4>
           <%= form_with model: @customer, url: customer_registration_path, method: :post do |f| %>
-            <div class="row mt-5 ml-5">
-              <div class="col-3">
-                <%= f.label :name, "お名前" %>
+            <div class="row mt-5 ml-3">
+              <div class="col-md-4">
+                <div class="required"><%= f.label :name, "お名前" %></div>
               </div>
-              <div class="col-5">
+              <div class="col-md-5">
                 <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
               </div>
             </div>
 
-            <div class="row mt-3 ml-5">
-              <div class="col-3">
-                <%= f.label :email, "メールアドレス" %>
+            <div class="row mt-3 ml-3">
+              <div class="col-md-4">
+                <div class="required"><%= f.label :email, "メールアドレス" %></div>
               </div>
-              <div class="col-8">
+              <div class="col-md-7">
                 <%= f.email_field :email, autocomplete: "email", placeholder: "email@example.com", class: "form-control" %>
               </div>
             </div>
 
-            <div class="row mt-3 ml-5">
-              <div class="col-3">
-                <%= f.label :password, "パスワード" %><br>
-                <% if @minimum_password_length %>
-                  (<%= @minimum_password_length %>文字以上)
-                <% end %>
+            <div class="row mt-3 ml-3">
+              <div class="col-md-4">
+                <div class="required">
+                  <%= f.label :password, "パスワード" %><br>
+                  <% if @minimum_password_length %>
+                    (<%= @minimum_password_length %>文字以上)
+                  <% end %>
+                </div>
               </div>
-              <div class="col-5">
+              <div class="col-md-5">
                 <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
               </div>
             </div>
 
-            <div class="row mt-3 ml-5">
-              <div class="col-3">
-                <%= f.label :password_confirmation, "パスワード(確認)" %>
+            <div class="row mt-3 ml-3">
+              <div class="col-md-4">
+                <div class="required"><%= f.label :password_confirmation, "パスワード(確認)" %></div>
               </div>
-              <div class="col-5">
+              <div class="col-md-5">
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
               </div>
             </div>
 
-            <div class="row mt-3 ml-5">
-              <div class="col-3"></div>
-              <div class="col-2">
+            <div class="row mt-3 ml-3">
+              <div class="col-md-4"></div>
+              <div class="col-md-2">
                 <%= f.submit "登録する", class: "btn btn-outline-success btn-sm btn-block" %>
               </div>
             </div>

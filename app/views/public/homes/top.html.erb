@@ -4,20 +4,12 @@
       <p class="notice"><%= notice %></p>
 
       <div class="row">
-        <div class="col-md-10 p-5">
+        <div class="col-md-10 mb-3 p-5">
           <h4 class="mb-3">本日のおすすめ</h4>
 
           <div class="col-10 mx-auto">
             <div class="row">
-              <% @posts.each do |post| %>
-                <div class="col-md-4 mx-auto mt-2 border-bottom">
-                  <i class="far fa-flag" aria-hidden="true"></i> <%= post.genre.name %><br>
-                  <%= link_to post_path(post), class: "link" do %>
-                    <%= image_tag post.image, class: "image" %><br>
-                    <div class="p-1"><%= post.title %></div>
-                  <% end %>
-                </div>
-              <% end %>
+              <%= render 'public/posts/index', posts: @likes_rank %>
             </div>
 
             <div class="row mt-3">
@@ -31,6 +23,22 @@
           </div>
 
         </div>
+
+        <% if customer_signed_in? %>
+          <div class="col-md-10 p-5">
+            <h4 class="mb-3">タイムライン</h4>
+            <% if @time_line.count == 0 %>
+              <p>表示できる投稿はまだありません。</p>
+            <% else %>
+              <div class="col-10 mx-auto">
+                <div class="row post-list">
+                  <%= render 'public/posts/index', posts: @time_line %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
       </div>
 
     </div>

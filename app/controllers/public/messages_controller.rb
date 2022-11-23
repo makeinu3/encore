@@ -6,8 +6,8 @@ class Public::MessagesController < ApplicationController
 
   def index
     @message = Message.new
-    # いいねランキング
-    @likes_rank = Like.last_week
+    # 会場ごとに投稿をグループにする
+    @place_posts = Post.group(:place)
   end
 
   def create

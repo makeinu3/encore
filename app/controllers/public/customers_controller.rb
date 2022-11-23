@@ -5,14 +5,14 @@ class Public::CustomersController < ApplicationController
   before_action :ensure_guest_user, except: [:show, :likes]
 
   def show
-    @customer_posts = Post.where(customer_id: @customer).order("show_date DESC")
+    @customer_posts = Post.where(customer_id: @customer).order(show_date: "DESC")
   end
 
   def edit
   end
 
   def update
-    @customer_posts = Post.where(customer_id: @customer).order("show_date DESC")
+    @customer_posts = Post.where(customer_id: @customer).order(show_date: "DESC")
     if @customer.update(customer_params)
       render :show
     else

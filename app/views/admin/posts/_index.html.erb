@@ -1,0 +1,19 @@
+<% posts.each do |post| %>
+  <div class="col-md-4 mb-3">
+    <div class="card">
+      <%= image_tag post.image, class: "image" %>
+      <div class="card-img-overlay text-white">
+        <div class="card-title">
+          <u><%= link_to post.title, admin_post_path(post), class: "text-light" %></u>
+        </div>
+        <p class="card-text">
+          <%= post.show_date.strftime('%y.%m.%d') %>
+        </p>
+      </div>
+      <div class="card-footer">
+        <i class="far fa-heart" aria-hidden="true"></i>
+        <%= post.likes.count %>
+      </div>
+    </div>
+  </div>
+<% end %>

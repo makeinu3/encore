@@ -78,20 +78,7 @@
           <% else %>
             <div class="post-list">
               <div class="row">
-                <% @customer_posts.each do |post| %>
-                  <div class="col-4 mb-3">
-                    <div class="card text-white">
-                      <%= image_tag post.image %>
-                      <div class="card-img-overlay">
-                        <h5 class="card-title"><strong><u><%= link_to post.title, post_path(post), class: "text-light" %></u></strong></h5>
-                        <p class="card-text">
-                          <%= post.show_date.strftime('%y.%m.%d') %><br>
-                          <%= post.show_name %>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
+                <%= render 'public/posts/index', posts: @customer_posts %>
               </div>
             </div>
           <% end %>

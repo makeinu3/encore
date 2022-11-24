@@ -27,6 +27,24 @@
 
             <div class="row mt-3 ml-3">
               <div class="col-md-4">
+                <%= f.label :my_fave, "好きなひと" %>
+              </div>
+              <div class="col-md-5">
+                <%= f.text_field :my_fave, autocomplete: "my favorite", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="col-md-4">
+                <%= f.label :introduction, "自己紹介" %>
+              </div>
+              <div class="col-md-7">
+                <%= f.text_area :introduction, autocomplete: "introduction", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="row mt-3 ml-3">
+              <div class="col-md-4">
                 <div class="required">
                   <%= f.label :password, "パスワード" %><br>
                   <% if @minimum_password_length %>

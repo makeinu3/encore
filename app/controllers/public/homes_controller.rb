@@ -8,7 +8,7 @@ class Public::HomesController < ApplicationController
     @likes_rank = Like.last_week
     # タイムライン(フォローしている人の投稿)
     if customer_signed_in?
-      @time_line = Post.publish_posts.where(customer_id: [current_customer]).order(created_at: "DESC")
+      @time_line = Post.publish_posts.where(customer_id: [current_customer.followings]).order(created_at: "DESC")
     end
   end
 

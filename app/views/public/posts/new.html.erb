@@ -12,7 +12,7 @@
               <%= form_with model: @post, url: posts_path do |f| %>
                 <div class="row mb-3">
                   <div class="col-3">
-                    <%= f.label :genre_id, "ジャンル" %>
+                    <div class="required"><%= f.label :genre_id, "ジャンル" %></div>
                   </div>
                   <div class="col-8">
                     <%= f.collection_select :genre_id, Genre.all, :id, :name, class: "form-control" %>
@@ -21,7 +21,7 @@
 
                 <div class="row mb-3">
                   <div class="col-3">
-                    <%= f.label :title, "タイトル" %>
+                    <div class="required"><%= f.label :title, "タイトル" %></div>
                   </div>
                   <div class="col-8">
                     <%= f.text_field :title, class: "form-control" %>
@@ -30,7 +30,7 @@
 
                 <div class="row mb-3">
                   <div class="col-3">
-                    <%= f.label :body, "本文" %>
+                    <div class="required"><%= f.label :body, "本文" %></div>
                   </div>
                   <div class="col-8">
                     <%= f.text_area :body, class: "form-control" %>
@@ -39,7 +39,7 @@
 
                 <div class="row mb-3">
                   <div class="col-3">
-                    <%= f.label :image, "画像" %>
+                    <div class="required"><%= f.label :image, "画像" %></div>
                   </div>
                   <div class="col-8">
                     <%= f.file_field :image, accept: "image/*" %>
@@ -48,7 +48,7 @@
 
                 <div class="row mb-3">
                   <div class="col-3">
-                    <%= f.label :place, "会場名" %>
+                    <div class="required"><%= f.label :place, "会場名" %></div>
                   </div>
                   <div class="col-8">
                     <%= f.text_field :place, class: "form-control" %>
@@ -57,7 +57,7 @@
 
                 <div class="row mb-3">
                   <div class="col-3">
-                    <%= f.label :show_name, "公演名" %>
+                    <div class="required"><%= f.label :show_name, "公演名" %></div>
                   </div>
                   <div class="col-8">
                     <%= f.text_field :show_name, class: "form-control" %>
@@ -66,7 +66,7 @@
 
                 <div class="row">
                   <div class="col-3">
-                    <%= f.label :show_date, "公演日" %>
+                    <div class="required"><%= f.label :show_date, "公演日" %></div>
                   </div>
                   <div class="col-8">
                     <%= f.date_field :show_date, class: "form-control" %>

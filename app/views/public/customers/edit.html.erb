@@ -11,7 +11,7 @@
 
             <div class="row mt-3">
               <div class="col-3">
-                <%= f.label :name, "お名前" %>
+                <div class="required"><%= f.label :name, "お名前" %></div>
               </div>
               <div class="col-8 offset-1">
                 <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
@@ -38,7 +38,7 @@
 
             <div class="row mt-3">
               <div class="col-3">
-                <%= f.label :email, "メールアドレス" %>
+                <div class="required"><%= f.label :email, "メールアドレス" %></div>
               </div>
               <div class="col-8 offset-1">
                 <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
@@ -47,7 +47,7 @@
 
             <div class="row mt-3">
               <div class="col-3">
-                <%= f.label :published, "アカウント公開" %>
+                <div class="required"><%= f.label :published, "アカウント公開" %></div>
               </div>
               <div class="col-8 offset-1">
                 <%= f.radio_button :published, true, checked: true %>

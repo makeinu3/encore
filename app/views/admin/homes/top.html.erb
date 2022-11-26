@@ -15,8 +15,8 @@
               <% @new_customers.each do |customer| %>
                 <tr>
                   <td><u><%= link_to customer.name, admin_customer_path(customer), class: "link" %></u> さま</td>
-                  <td>favorite:&emsp;<%= customer.my_fave %></td>
-                  <td>posts:&emsp;<%= customer.posts.count %></td>
+                  <td>好きなひと:&emsp;<%= customer.my_fave %></td>
+                  <td>投稿数:&emsp;<%= customer.posts.count %></td>
                 </tr>
               <% end %>
             </table>

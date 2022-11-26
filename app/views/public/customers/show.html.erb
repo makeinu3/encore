@@ -76,6 +76,7 @@
           <% elsif @customer_posts.count == 0 %>
             <p class="text-center">投稿はまだありません。</p>
           <% else %>
+            <h5 class="mb-3"><%= @customer_posts.count %> Posts</h5>
             <div class="post-list">
               <div class="row">
                 <%= render 'public/posts/index', posts: @customer_posts %>

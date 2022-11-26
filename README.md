@@ -31,6 +31,7 @@
 ## 設計書
 - ER図：https://drive.google.com/file/d/1Avm_HYkdgw27q2BRLxNLvi0ysn5pKQcr/view?usp=sharing
 - テーブル定義書：https://docs.google.com/spreadsheets/d/1L_Nc50CNNOSLhiMsqOdmJ-Yg6qHVRtKsgLy1Xrepl-w/edit?usp=sharing
+- アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1w61H0ewgQWuYSQ9XYUHWH2reIIc7mi3OKeZcirzklnc/edit?usp=sharing
 
 
 ## 開発環境

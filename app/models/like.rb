@@ -9,11 +9,11 @@ class Like < ApplicationRecord
   def self.last_week
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
-    Post.publish_posts.includes(:liked_customers).limit(3).
+    Post.publish_posts.includes(:liked_customers).
       sort { |a,b|
         b.liked_customers.where(likes: { created_at: from...to }).size <=>
         a.liked_customers.where(likes: { created_at: from...to }).size
-      }
+      }.take(3)
   end
 
 end

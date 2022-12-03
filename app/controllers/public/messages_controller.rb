@@ -28,7 +28,7 @@ class Public::MessagesController < ApplicationController
   end
 
   def set_message_all
-    @messages = Message.all.includes(:customer)
+    @messages = Message.all.includes(:customer).page(params[:page]).per(8)
   end
 
 end

@@ -5,7 +5,11 @@ class Public::PostsController < ApplicationController
 
   def index
     @search = Post.publish_posts.includes(:customer).ransack(params[:q])          # 検索
-    @posts = @search.result.page(params[:page]).per(6).order(created_at: "DESC")  # 検索結果
+    if params[:place]
+      @posts = Post.where(place:params[:place]).page(params[:page]).per(6).order(created_at: "DESC")
+    else
+      @posts = @search.result.page(params[:page]).per(6).order(created_at: "DESC")  # 検索結果
+    end
   end
 
   def show

@@ -7,7 +7,7 @@ class Public::MessagesController < ApplicationController
   def index
     @message = Message.new
     # 会場ごとに投稿をグループにする
-    @place_posts = Post.group(:place).limit(3)
+    @place_posts = Post.group(:place).order("count(posts.id) desc").pluck("count(posts.id),posts.place").slice(0,3)
   end
 
   def create

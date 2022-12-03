@@ -11,9 +11,14 @@
               <div class="col-md-4 mb-3 mx-auto">
                 <div class="card">
                   <div class="card-header">
-                    <%= post.place %>
+                    <%= "#{post[1]}" %>
                   </div>
-                  <%= image_tag post.image, width: "100%" %>
+                  <%= image_tag Post.where(place:post[1]).last.image, class: "image" %>
+                  <div class="card-img-overlay d-flex align-items-end justify-content-end">
+                    <div class="card-maru p-2">
+                      <%= link_to "+ #{post[0] - 1}", posts_path(place:"#{post[1]}"), class: "text-white" %>
+                    </div>
+                  </div>
                 </div>
               </div>
             <% end %>

@@ -91,7 +91,7 @@ footer {
 
 /* トップページのタイムライン、会員詳細の投稿リスト、コメント */
 .post-list, .comments {
-  height: 300px;
+  max-height: 300px;
   overflow-y: scroll;
 }
 

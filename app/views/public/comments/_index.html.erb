@@ -7,6 +7,7 @@
       <% end %>
     </div>
     <div class="col-7"><%= comment.comment %></div>
+    <div class="sentiment-score">[<%= comment.score %>]</div>
     <div class="col-2"><%= comment.created_at.strftime('%y.%m.%d') %></div>
       <% if comment.customer == current_customer %>
         <div class="col-1">

@@ -89,8 +89,8 @@ footer {
   align-items: center;
 }
 
-/* トップページのタイムライン、会員詳細の投稿リスト */
-.post-list {
+/* トップページのタイムライン、会員詳細の投稿リスト、コメント */
+.post-list, .comments {
   height: 300px;
   overflow-y: scroll;
 }

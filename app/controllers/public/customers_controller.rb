@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
 
-  before_action :redirect_welcome
+  before_action :redirect_welcome, except: [:revive, :restore]
   before_action :set_customer, only: [:show, :edit, :update, :likes]  # Customer.find(params[:id])
   before_action :ensure_guest_user, except: [:show, :likes]
 
@@ -38,6 +38,17 @@ class Public::CustomersController < ApplicationController
     reset_session
     flash[:notice] = "退会手続きが完了しました。"
     redirect_to thanks_path
+  end
+
+  # 退会済アカウントの復活確認
+  def revive
+    @customer = current_customer
+  end
+
+  # 復活処理
+  def restore
+    @customer = current_customer
+    @customer.update(is_deleted: false)
   end
 
 

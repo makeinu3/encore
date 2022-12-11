@@ -41,9 +41,9 @@ class Public::SessionsController < Devise::SessionsController
     return if !@customer
     # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別 && 退会ステータスがtrue
     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
-      # 退会済カスタマーはサインアップ画面へ
+      # 退会済カスタマーは復活確認画面へ
       flash[:notice] = "このメールアドレスは現在ご利用できません。"
-      redirect_to confirm_revive_path
+      redirect_to confirm_path
     end
   end
 

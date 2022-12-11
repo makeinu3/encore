@@ -1,8 +1,8 @@
 class Public::CustomersController < ApplicationController
 
-  before_action :redirect_welcome, except: [:revive, :restore]
+  before_action :redirect_welcome, except: [:confirm, :complete]
   before_action :set_customer, only: [:show, :edit, :update, :likes]  # Customer.find(params[:id])
-  before_action :ensure_guest_user, except: [:show, :likes]
+  before_action :ensure_guest_user, except: [:show, :likes, :confirm, :complete]
 
   def show
     @customer_posts = Post.where(customer_id: @customer).order(show_date: "DESC", created_at: "DESC")
@@ -41,14 +41,12 @@ class Public::CustomersController < ApplicationController
   end
 
   # 退会済アカウントの復活確認
-  def revive
-    @customer = current_customer
+  def confirm
   end
 
-  # 復活処理
-  def restore
-    @customer = current_customer
-    @customer.update(is_deleted: false)
+  # 復活申請完了画面
+  def complete
+    flash[:notice] = "復活申請が完了しました。"
   end
 
 

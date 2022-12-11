@@ -33,8 +33,8 @@ Rails.application.routes.draw do
 
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'  # 退会確認画面
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'        # 退会処理
-    get 'customers/revive' => 'customers#revive', as: 'confirm_revive'                 # 復活確認画面
-    patch 'customers/restore' => 'customers#restore', as: 'restore_customer'           # 復活処理
+    get 'customers/confirm' => 'customers#confirm', as: 'confirm'                      # 復活申請画面
+    get 'customers/complete' => 'customers#complete', as: 'complete'                   # 復活申請完了画面
     resources :customers, only: [:show, :edit, :update] do
       member do
         get 'likes'  # いいねした投稿一覧

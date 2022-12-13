@@ -47,6 +47,10 @@ class Public::CustomersController < ApplicationController
   # 復活申請完了画面
   def complete
     flash[:notice] = "復活申請が完了しました。"
+    unless current_customer.is_deleted
+      redirect_to current_customer
+    end
+      
   end
 
 

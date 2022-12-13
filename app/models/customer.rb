@@ -16,6 +16,9 @@ class Customer < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  # 復活申請
+  has_many :return_requests, dependent: :destroy
+
 
   validates :name, presence: true
   validates :email, uniqueness: true, presence: true
@@ -41,8 +44,8 @@ class Customer < ApplicationRecord
   end
 
   # 退会していなかったらログインできる
-  def active_for_authentication?
-    super && (is_deleted == false)
-  end
+  # def active_for_authentication?
+  #   super && (is_deleted == false)
+  # end
 
 end

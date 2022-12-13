@@ -1,3 +1,9 @@
+<% @return_requests.each do |r|%>
+  <%=r.customer.name %>
+  <%=r.customer.email %>
+  <%= link_to "許可", admin_return_request_path(r), method: :patch%>
+
+<%end%>
 <div class="container">
   <div class="row my-4">
     <div class="col-md-12">

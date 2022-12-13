@@ -6,6 +6,7 @@ class Admin::HomesController < ApplicationController
   def top
     @new_customers = Customer.limit(3).order(created_at: "DESC")
     @new_posts = Post.limit(3).order(created_at: "DESC")
+    @return_requests = ReturnRequest.where(approved: false)
   end
 
 end

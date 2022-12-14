@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
 
   before_action :redirect_welcome, except: [:index]
+  before_action :return_requested, except: [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy]  # Post.find(params[:id])
 
   def index

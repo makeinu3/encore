@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
 
-  before_action :redirect_welcome, except: [:confirm, :complete]
+  before_action :redirect_welcome
+  before_action :return_requested, except: [:confirm, :complete]
   before_action :set_customer, only: [:show, :edit, :update, :likes]  # Customer.find(params[:id])
   before_action :ensure_guest_user, except: [:show, :likes, :confirm, :complete]
 
@@ -47,10 +48,6 @@ class Public::CustomersController < ApplicationController
   # 復活申請完了画面
   def complete
     flash[:notice] = "復活申請が完了しました。"
-    unless current_customer.is_deleted
-      redirect_to current_customer
-    end
-      
   end
 
 

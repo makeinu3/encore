@@ -1,6 +1,7 @@
 class Public::MessagesController < ApplicationController
 
   before_action :redirect_welcome
+  before_action :return_requested
   before_action :set_message, only: [:destroy]  # Message.find(params[:id])
   before_action :set_message_all
 

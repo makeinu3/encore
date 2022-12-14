@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
 
   before_action :redirect_welcome
+  before_action :return_requested
 
 
   def create

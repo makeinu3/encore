@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     @customers = Customer.all
     @posts = Post.all.order("created_at DESC")
     @messages = Message.all
+    @return_requests = ReturnRequest.where(approved: false)
   end
 
   ## public

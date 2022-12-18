@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post '/guests/guest_sign_in' => 'guests#admin_guest', as: 'guestadmin'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :return_requests, only: [:update]
+    resources :return_requests, only: [:index, :update]
 
     resources :posts, only: [:index, :show] do
       resources :comments, only: [:destroy]

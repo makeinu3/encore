@@ -1,7 +1,7 @@
 class Admin::GenresController < ApplicationController
 
   before_action :authenticate_admin!
-  before_action :set_sidebar                  # @customers, @posts, @messages
+  before_action :set_sidebar                  # @customers, @posts, @messages, @return_requests
   before_action :set_genre, except: [:index, :create]  # Genre.find(params[:id])
 
   def index

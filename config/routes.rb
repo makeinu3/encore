@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post '/guests/guest_sign_in' => 'guests#admin_guest', as: 'guestadmin'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :return_requests, only: [:index, :update]
 
     resources :posts, only: [:index, :show] do
       resources :comments, only: [:destroy]
@@ -33,6 +34,9 @@ Rails.application.routes.draw do
 
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'  # 退会確認画面
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'        # 退会処理
+    get 'customers/confirm' => 'customers#confirm', as: 'confirm'                      # 復活申請画面
+    get 'customers/complete' => 'customers#complete', as: 'complete'                   # 復活申請完了画面
+    resources :return_requests, only: [:create]
     resources :customers, only: [:show, :edit, :update] do
       member do
         get 'likes'  # いいねした投稿一覧

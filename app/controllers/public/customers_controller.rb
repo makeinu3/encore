@@ -1,8 +1,9 @@
 class Public::CustomersController < ApplicationController
 
   before_action :redirect_welcome
+  before_action :return_requested, except: [:confirm, :complete]
   before_action :set_customer, only: [:show, :edit, :update, :likes]  # Customer.find(params[:id])
-  before_action :ensure_guest_user, except: [:show, :likes]
+  before_action :ensure_guest_user, except: [:show, :likes, :confirm, :complete]
 
   def show
     @customer_posts = Post.where(customer_id: @customer).order(show_date: "DESC", created_at: "DESC")
@@ -38,6 +39,15 @@ class Public::CustomersController < ApplicationController
     reset_session
     flash[:notice] = "退会手続きが完了しました。"
     redirect_to thanks_path
+  end
+
+  # 退会済アカウントの復活確認
+  def confirm
+  end
+
+  # 復活申請完了画面
+  def complete
+    flash[:notice] = "復活申請が完了しました。"
   end
 
 

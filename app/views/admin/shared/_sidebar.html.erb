@@ -35,4 +35,16 @@
   <li class="list-group-item">
     <%= link_to "ジャンル", admin_genres_path, class: "link" %>
   </li>
+  <li class="list-group-item">
+    <%= link_to admin_return_requests_path do %>
+      <div class="text-dark">
+        復活申請一覧
+        <% if return_requests.count > 0 %>
+          <span class="badge badge-danger badge-pill">
+            <%= return_requests.count %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+  </li>
 </ul>

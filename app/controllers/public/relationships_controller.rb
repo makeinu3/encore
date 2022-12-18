@@ -1,6 +1,7 @@
 class Public::RelationshipsController < ApplicationController
 
   before_action :redirect_welcome
+  before_action :return_requested
 
   def create
     current_customer.follow(params[:customer_id])

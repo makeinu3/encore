@@ -1,6 +1,8 @@
 class Public::CommentsController < ApplicationController
 
   before_action :redirect_welcome
+  before_action :return_requested
+
 
   def create
     @post = Post.find(params[:post_id])
@@ -22,5 +24,14 @@ class Public::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment)
   end
+
+
+
+  # def
+  #   if current_customer && current_customer.is_deleted
+  #     redirect_to confirm_path
+
+  #   end
+  # end
 
 end

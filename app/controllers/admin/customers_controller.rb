@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
   before_action :authenticate_admin!
-  before_action :set_sidebar                     # @customers, @posts, @messages
+  before_action :set_sidebar                     # @customers, @posts, @messages, @return_requests
   before_action :set_customer, except: [:index]  # Customer.find(params[:id])
 
   def index

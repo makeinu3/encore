@@ -5,18 +5,18 @@
 
       <div class="row">
         <div class="col-md-3 mb-3 p-5">
-          <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages %>
+          <%= render 'admin/shared/sidebar', customers: @customers, posts: @posts, messages: @messages, return_requests: @return_requests %>
         </div>
 
         <div class="col-md-8 p-5">
           <h4>お客様ノート</h4>
           <div class="messages">
-            <%= render 'admin/messages/index', messages: @messages %>
+            <%= render 'admin/messages/index', messages: @all_messages %>
           </div>
 
           <div class="row mt-5">
             <div class="col-4 mx-auto">
-              <%= paginate @messages %>
+              <%= paginate @all_messages %>
             </div>
           </div>
 

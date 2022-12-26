@@ -22,6 +22,7 @@
                 <div class="row mb-3">
                   <div class="col-3">
                     <div class="required"><%= f.label :title, "タイトル" %></div>
+                    <div class="validates">(20字以内)</div>
                   </div>
                   <div class="col-8">
                     <%= f.text_field :title, class: "form-control" %>
@@ -31,6 +32,7 @@
                 <div class="row mb-3">
                   <div class="col-3">
                     <div class="required"><%= f.label :body, "本文" %></div>
+                    <div class="validates">(1000字以内)</div>
                   </div>
                   <div class="col-8">
                     <%= f.text_area :body, class: "form-control" %>

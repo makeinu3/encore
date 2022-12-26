@@ -34,11 +34,20 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    unless @post.customer == current_customer
+      flash[:notice] = "その操作はできません。"
+      redirect_to post_path(@post)
+    end
   end
 
   def update
     @comment = Comment.new
-    @post.update(post_params)
+    if @post.customer == current_customer
+      @post.update(post_params)
+      flash[:notice] = "更新に成功しました。"
+    else
+      flash[:notice] = "更新に失敗しました。"
+    end
     render :show
   end
 
